@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_nfc">
+
+    <fragment
+        android:id="@+id/navigation_nfc"
+        android:name="at.fhooe.mc.fitcom.ui.nfc.NFCFragment"
+        android:label="@string/title_nfc"
+        tools:layout="@layout/fragment_nfc" />
+
+    <fragment
+        android:id="@+id/navigation_exercises"
+        android:name="at.fhooe.mc.fitcom.ui.exercises.ExercisesFragment"
+        android:label="@string/title_exercises"
+        tools:layout="@layout/fragment_exercises" />
+
+    <fragment
+        android:id="@+id/navigation_stats"
+        android:name="at.fhooe.mc.fitcom.ui.stats.StatsFragment"
+        android:label="@string/title_stats"
+        tools:layout="@layout/fragment_stats" />
+</navigation>

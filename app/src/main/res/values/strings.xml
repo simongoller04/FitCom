@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Fitcom</string>
+    <string name="title_nfc">NFC</string>
+    <string name="title_exercises">Exercises</string>
+    <string name="title_stats">Stats</string>
+</resources>

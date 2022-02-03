@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_nfc"
+        android:icon="@drawable/ic_nfc"
+        android:title="@string/title_nfc" />
+
+    <item
+        android:id="@+id/navigation_exercises"
+        android:icon="@drawable/ic_exercises"
+        android:title="@string/title_exercises" />
+
+    <item
+        android:id="@+id/navigation_stats"
+        android:icon="@drawable/ic_stats"
+        android:title="@string/title_stats" />
+</menu>
