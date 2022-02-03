@@ -1,17 +1,16 @@
-package at.fhooe.mc.fitcom.ui.exercises
+package at.fhooe.mc.fitcom.ui.workouts
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import at.fhooe.mc.fitcom.databinding.FragmentExercisesBinding
+import at.fhooe.mc.fitcom.databinding.FragmentWorkoutsBinding
 
-class ExercisesFragment : Fragment() {
+class WorkoutsFragment : Fragment() {
 
-    private var _binding: FragmentExercisesBinding? = null
+    private var _binding: FragmentWorkoutsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,16 +22,11 @@ class ExercisesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val dashboardViewModel =
-            ViewModelProvider(this).get(ExercisesViewModel::class.java)
+            ViewModelProvider(this).get(WorkoutsViewModel::class.java)
 
-        _binding = FragmentExercisesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        _binding = FragmentWorkoutsBinding.inflate(inflater, container, false)
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {

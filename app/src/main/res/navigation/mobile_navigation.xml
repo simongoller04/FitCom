@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_exercises"
-        android:name="at.fhooe.mc.fitcom.ui.exercises.ExercisesFragment"
+        android:name="at.fhooe.mc.fitcom.ui.workouts.WorkoutsFragment"
         android:label="@string/title_exercises"
-        tools:layout="@layout/fragment_exercises" />
+        tools:layout="@layout/fragment_workouts" />
 
     <fragment
         android:id="@+id/navigation_stats"
