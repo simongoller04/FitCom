@@ -7,9 +7,9 @@
         android:title="@string/title_nfc" />
 
     <item
-        android:id="@+id/navigation_exercises"
+        android:id="@+id/navigation_workouts"
         android:icon="@drawable/ic_exercises"
-        android:title="@string/title_exercises" />
+        android:title="@string/title_workouts" />
 
     <item
         android:id="@+id/navigation_stats"

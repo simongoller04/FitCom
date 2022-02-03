@@ -68,18 +68,20 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener{
                             //safe user in hashMap to then insert into the database
                             val user = hashMapOf(
                                 "firstName" to firstName.toString(),
-                                "workouts" to arrayListOf<String>(),
+                                "weight" to 0,
+                                "workoutNames" to ArrayList<String>(),
                                 "uid" to mAuth.uid
                             )
                             //get the user ID of the user and name the document in the database like that
                             mDb.collection("users").document(mAuth.uid.toString()).set(user)
+
                             Toast.makeText(this, "User registered successfully", Toast.LENGTH_SHORT)
                                 .show()
 
                             //saving users first Name in shared Preferences for faster Access
                             with(
                                 getSharedPreferences(
-                                    "at.fhooe.me.fitcom.FirstName",
+                                    "at.fhooe.mc.fitcom.FirstName",
                                     Context.MODE_PRIVATE
                                 ).edit()
                             ) {
