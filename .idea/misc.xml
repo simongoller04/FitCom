@@ -10,10 +10,11 @@
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/activity_sign_up.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/fragment_dashboard.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/menu/bottom_nav_menu.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/fragment_exercises.xml" value="0.40217391304347827" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
