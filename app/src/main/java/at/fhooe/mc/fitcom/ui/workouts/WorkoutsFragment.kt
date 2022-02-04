@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import at.fhooe.mc.fitcom.R
 import at.fhooe.mc.fitcom.databinding.FragmentWorkoutsBinding
 import com.google.android.material.card.MaterialCardView
@@ -28,6 +29,9 @@ class WorkoutsFragment : Fragment() {
     private var _binding: FragmentWorkoutsBinding? = null
     private var mAuth = FirebaseAuth.getInstance()
     private var mDb = Firebase.firestore
+    private var mWorkoutNames = ArrayList<String>()
+    private var mWorkoutColors = ArrayList<String>()
+    private lateinit var mAdapter: WorkoutsAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -47,8 +51,44 @@ class WorkoutsFragment : Fragment() {
             showSectionColorDialog()
         }
 
+        if (mAuth.currentUser != null) {
+
+            mDb.collection("users").document(mAuth.uid.toString()).get().addOnCompleteListener() {
+                if (it.isSuccessful) {
+
+                    mWorkoutNames = it.result!!["workoutNames"] as ArrayList<String>
+                    mWorkoutColors = it.result!!["workoutColors"] as ArrayList<String>
+
+                    mAdapter = WorkoutsAdapter(mWorkoutNames, mWorkoutColors)
+
+                    binding.fragmentsWorkoutsRecyclerView.adapter = mAdapter
+                    binding.fragmentsWorkoutsRecyclerView.layoutManager =
+                        LinearLayoutManager(binding.root.context)
+
+
+                } else {
+                    Toast.makeText(binding.root.context, "Fetching Data failed!", Toast.LENGTH_LONG)
+                        .show()
+                }
+            }
+        }
+
+
+
         return binding.root
     }
+
+
+    override fun onPause() {
+        super.onPause()
+        //add workout to firestore
+        mDb.collection("users").document(mAuth.uid.toString()).update(
+            "workoutNames",
+            mWorkoutNames,
+            "workoutColors",
+            mWorkoutColors
+        )}
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -151,33 +191,21 @@ class WorkoutsFragment : Fragment() {
             if (workoutName.isNullOrEmpty()) {
                 textInputLayout.error = "Add a workout name"
             } else {
-                //add workout to firestore
-                val workoutData = hashMapOf(
-                    "color" to workoutColor
-                )
 
-                mDb.collection("users").document(mAuth.uid.toString()).collection("workouts")
-                    .document(workoutName.toString()).set(workoutData)
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            mDb.collection("users").document(mAuth.uid.toString()).update("workoutNames", FieldValue.arrayUnion(workoutName.toString()))
-                            //workout added to firestore
-                            dialog.cancel()
-                            Toast.makeText(
-                                binding.root.context,
-                                "Added workout $workoutName!",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        } else {
-                            Toast.makeText(
-                                binding.root.context,
-                                "Adding workout $workoutName failed!",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
+
+                mAdapter.addItem(workoutName.toString(), workoutColor.toString())
+                dialog.cancel()
+                Toast.makeText(
+                    binding.root.context,
+                    "Added workout $workoutName!",
+                    Toast.LENGTH_SHORT
+                ).show()
+
             }
+
         }
+
         dialog.show()
+
     }
 }

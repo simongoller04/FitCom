@@ -70,6 +70,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener{
                                 "firstName" to firstName.toString(),
                                 "weight" to 0,
                                 "workoutNames" to ArrayList<String>(),
+                                "workoutColors" to ArrayList<Int>(),
                                 "uid" to mAuth.uid
                             )
                             //get the user ID of the user and name the document in the database like that
