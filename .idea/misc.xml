@@ -18,9 +18,13 @@
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/menu/bottom_nav_menu.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.3225" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/drawable/rounded_corner_rectangle.xml" value="0.3225" />
+        <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/drawable/three_dot_icon.xml" value="0.3505" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/activity_exercise.xml" value="0.3651041666666667" />
+        <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/activity_exercise_pool.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/dialog_forgot_password.xml" value="0.21354166666666666" />
+        <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/exercise_item.xml" value="0.3651041666666667" />
+        <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/exercise_list_item.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/fragment_workouts.xml" value="0.40217391304347827" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/workout_item.xml" value="0.40217391304347827" />
       </map>
