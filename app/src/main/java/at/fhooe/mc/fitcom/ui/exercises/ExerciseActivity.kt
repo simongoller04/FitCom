@@ -1,5 +1,6 @@
 package at.fhooe.mc.fitcom.ui.exercises
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import at.fhooe.mc.fitcom.R
 import at.fhooe.mc.fitcom.databinding.ActivityExerciseBinding
+import at.fhooe.mc.fitcom.ui.exercises.exercisePool.ExercisePoolActivity
 import at.fhooe.mc.fitcom.ui.workouts.WorkoutsAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -73,6 +75,7 @@ class ExerciseActivity : AppCompatActivity() {
 
         binding.activityExerciseFabAddExercise.setOnClickListener{
 
+            it.context.startActivity(Intent(it.context, ExercisePoolActivity::class.java))
 
 
             mAdapter.addItem("Bench Press", 50F, 6, 3)

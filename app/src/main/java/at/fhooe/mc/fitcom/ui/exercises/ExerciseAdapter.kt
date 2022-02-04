@@ -1,10 +1,12 @@
 package at.fhooe.mc.fitcom.ui.exercises
 
+import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import at.fhooe.mc.fitcom.R
+import at.fhooe.mc.fitcom.ui.exercises.exercisePool.ExercisePoolActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -34,8 +36,9 @@ class ExerciseAdapter (val exercises: ArrayList<String>, val weights: ArrayList<
 
 
         holder.mRectangle.setOnClickListener {
-
+            TODO("Start workout routine")
         }
+
     }
 
     override fun getItemCount(): Int {

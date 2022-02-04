@@ -6,4 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".ui.exercises.exercisePool.ExercisePoolActivity">
 
+    <EditText
+        android:id="@+id/activity_exercise_pool_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Search Exercise"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@id/activity_exercise_pool_button_chest"
+        app:layout_constraintStart_toStartOf="@id/activity_exercise_pool_button_arm"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/activity_exercise_pool_button_arm"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="3dp"
+        android:text="Arm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_pool_editText" />
+
+    <Button
+        android:id="@+id/activity_exercise_pool_button_back"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="Back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_pool_editText" />
+
+    <Button
+        android:id="@+id/activity_exercise_pool_button_chest"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="16dp"
+        android:text="Chest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_pool_editText" />
+
+    <Button
+        android:id="@+id/activity_exercise_pool_button_core"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Core"
+        app:layout_constraintStart_toStartOf="@+id/activity_exercise_pool_button_arm"
+        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_pool_button_arm" />
+
+    <Button
+        android:id="@+id/activity_exercise_pool_button_legs"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Legs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_pool_button_back" />
+
+    <Button
+        android:id="@+id/activity_exercise_pool_button_shoulder"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Shoulder"
+        app:layout_constraintEnd_toEndOf="@+id/activity_exercise_pool_button_chest"
+        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_pool_button_chest" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_exercise_pool_recyclerView"
+        android:layout_width="409dp"
+        android:layout_height="557dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_pool_button_core" />
 </androidx.constraintlayout.widget.ConstraintLayout>
