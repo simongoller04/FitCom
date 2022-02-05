@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fitcom">
         <activity
+            android:name=".ui.exercises.exercisePool.ExerciseDetailedActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.exercises.exercisePool.ExercisePoolActivity"
             android:exported="false" />
         <activity
