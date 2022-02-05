@@ -25,19 +25,15 @@ class ExerciseAdapter (val exercises: ArrayList<String>, val weights: ArrayList<
 
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
         holder.mExerciseName.text = exercises[position]
-        holder.mWeight.text = weights[position].toString()
-        holder.mReps.text = reps[position].toString()
-        holder.mSets.text = sets[position].toString()
+        holder.mWeight.text = weights[position].toString() + "kg"
+        holder.mReps.text = reps[position].toString() + " reps"
+        holder.mSets.text = sets[position].toString() + " sets"
 
-
-        holder.mEditButton.setOnClickListener {
-            TODO("Change Weight- , Reps-, Sets-Settings")
+        holder.mCardView.setOnClickListener {
+            holder.mCardView.isChecked = true   //TODO ("Change to open new activity")
         }
 
 
-        holder.mRectangle.setOnClickListener {
-            TODO("Start workout routine")
-        }
 
     }
 

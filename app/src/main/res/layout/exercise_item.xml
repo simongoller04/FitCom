@@ -11,99 +11,69 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <View
-            android:id="@+id/exercise_item_rectangle"
-            android:layout_width="0dp"
-            android:layout_height="90dp"
-
-
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/rounded_corner_rectangle"
-            android:backgroundTint="@android:color/darker_gray"
-            android:paddingTop="5dp"
-            android:paddingBottom="16dp"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/exercise_item_cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:clickable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/exercise_item_text"
-            android:layout_width="wrap_content"
-            android:layout_height="29dp"
-            android:layout_marginStart="16dp"
-            android:text="Benchpress"
-            android:textAlignment="center"
-            android:textColor="@color/colorDialog"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="@+id/exercise_item_rectangle"
-            app:layout_constraintTop_toTopOf="@+id/exercise_item_rectangle"
-            app:layout_constraintVertical_bias="1.0" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/exercise_item_button"
-            android:layout_width="61dp"
-            android:layout_height="40dp"
-            android:backgroundTint="@color/transparent"
-            android:src="@drawable/three_dot_icon"
-            android:tint="@color/colorDialog"
-            app:layout_constraintBottom_toBottomOf="@+id/exercise_item_rectangle"
-            app:layout_constraintEnd_toEndOf="@+id/exercise_item_rectangle"
-            app:layout_constraintTop_toTopOf="@+id/exercise_item_rectangle" />
+                <TextView
+                    android:id="@+id/exercise_item_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="29dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Benchpress"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/exercise_item_weight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="60kg"
-            android:textColor="@color/colorDialog"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/exercise_item_rectangle"
-            app:layout_constraintEnd_toStartOf="@+id/exercise_item_reps"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@id/exercise_item_rectangle"
-            app:layout_constraintStart_toStartOf="@+id/exercise_item_rectangle"
-            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+                <TextView
+                    android:id="@+id/exercise_item_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="weight"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/exercise_item_text"
+                    app:layout_constraintTop_toBottomOf="@+id/exercise_item_text" />
 
-        <TextView
-            android:id="@+id/exercise_item_sets"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4 Sets"
-            android:textColor="@color/colorDialog"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/exercise_item_rectangle"
-            app:layout_constraintEnd_toEndOf="@id/exercise_item_rectangle"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/exercise_item_reps"
-            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+                <TextView
+                    android:id="@+id/exercise_item_reps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="reps"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/exercise_item_weight"
+                    app:layout_constraintStart_toEndOf="@+id/exercise_item_weight"
+                    app:layout_constraintTop_toTopOf="@+id/exercise_item_weight" />
 
-        <TextView
-            android:id="@+id/exercise_item_reps"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="8 Reps"
-            android:textColor="@color/colorDialog"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/exercise_item_rectangle"
-            app:layout_constraintEnd_toStartOf="@+id/exercise_item_sets"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/exercise_item_weight"
-            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+                <TextView
+                    android:id="@+id/exercise_item_sets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="sets"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/exercise_item_weight"
+                    app:layout_constraintStart_toEndOf="@+id/exercise_item_reps"
+                    app:layout_constraintTop_toTopOf="@+id/exercise_item_weight" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="55dp" />
-
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
