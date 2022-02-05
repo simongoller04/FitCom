@@ -30,11 +30,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="29dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="Benchpress"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="24dp"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,40 +43,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:text="weight"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/exercise_item_text"
-                    app:layout_constraintTop_toTopOf="@+id/guideline2" />
+                    app:layout_constraintTop_toBottomOf="@+id/exercise_item_text" />
 
                 <TextView
                     android:id="@+id/exercise_item_reps"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
                     android:text="reps"
                     android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/exercise_item_weight"
                     app:layout_constraintStart_toEndOf="@+id/exercise_item_weight"
-                    app:layout_constraintTop_toTopOf="@+id/guideline2" />
+                    app:layout_constraintTop_toTopOf="@+id/exercise_item_weight" />
 
                 <TextView
                     android:id="@+id/exercise_item_sets"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
                     android:text="sets"
                     android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/exercise_item_weight"
                     app:layout_constraintStart_toEndOf="@+id/exercise_item_reps"
-                    app:layout_constraintTop_toTopOf="@+id/guideline2" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_begin="55dp" />
+                    app:layout_constraintTop_toTopOf="@+id/exercise_item_weight" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

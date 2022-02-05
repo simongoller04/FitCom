@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import at.fhooe.mc.fitcom.R
 import at.fhooe.mc.fitcom.databinding.ActivityExerciseBinding
@@ -41,6 +42,13 @@ class ExerciseActivity : AppCompatActivity() {
 
         supportActionBar?.title = mName
 
+
+        binding.activityExerciseRecyclerView.addItemDecoration(
+            DividerItemDecoration(
+                this@ExerciseActivity,
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
         //TODO remove after testing
         mAdapter = ExerciseAdapter(mExerciseNames, mWeights, mReps, mSets)

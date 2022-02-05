@@ -5,6 +5,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import at.fhooe.mc.fitcom.R
+import com.google.android.material.card.MaterialCardView
 
 class ExerciseViewHolder (root: View): RecyclerView.ViewHolder(root) {
 
@@ -12,7 +13,6 @@ class ExerciseViewHolder (root: View): RecyclerView.ViewHolder(root) {
     val mWeight: TextView = root.findViewById(R.id.exercise_item_weight)
     val mReps: TextView = root.findViewById(R.id.exercise_item_reps)
     val mSets: TextView = root.findViewById(R.id.exercise_item_sets)
-    val mEditButton: ImageButton = root.findViewById(R.id.exercise_item_button)
-    val mRectangle: View = root.findViewById(R.id.exercise_item_rectangle)
+    val mCardView: MaterialCardView = root.findViewById(R.id.exercise_item_cardView)
     val mRoot: View = root
 }
