@@ -35,6 +35,10 @@
         android:layout_width="0dp"
         android:layout_height="84dp"
         android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:contextClickable="true"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,12 +49,12 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/activity_exercise_detailed_weight_minus_button"
+                android:id="@+id/activity_exercise_detailed_weight_plus_button"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="100dp"
                 android:textAlignment="center"
-                app:icon="@drawable/subtract_icon"
+                app:icon="@drawable/add_icon"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_detailed_weight_amount_textview"
@@ -63,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Weight"
+                android:text="Weight (kg)"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -84,12 +88,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_weight_textview" />
 
             <Button
-                android:id="@+id/activity_exercise_detailed_weight_plus_button"
+                android:id="@+id/activity_exercise_detailed_weight_minus_button"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
                 android:textAlignment="center"
-                app:icon="@drawable/add_icon"
+                app:icon="@drawable/subtract_icon"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_detailed_weight_amount_textview"
@@ -104,6 +108,8 @@
         android:layout_width="0dp"
         android:layout_height="84dp"
         android:layout_marginTop="16dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,15 +117,17 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:contextClickable="true">
 
             <Button
-                android:id="@+id/activity_exercise_detailed_reps_minus_button"
+                android:id="@+id/activity_exercise_detailed_reps_plus_button"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="100dp"
                 android:textAlignment="center"
-                app:icon="@drawable/subtract_icon"
+                app:icon="@drawable/add_icon"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_detailed_reps_amount_textview"
@@ -153,12 +161,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_reps_textview" />
 
             <Button
-                android:id="@+id/activity_exercise_detailed_reps_plus_button"
+                android:id="@+id/activity_exercise_detailed_reps_minus_button"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
                 android:textAlignment="center"
-                app:icon="@drawable/add_icon"
+                app:icon="@drawable/subtract_icon"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_detailed_reps_amount_textview"
@@ -173,6 +181,8 @@
         android:layout_width="0dp"
         android:layout_height="84dp"
         android:layout_marginTop="16dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -180,15 +190,17 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:contextClickable="true">
 
             <Button
-                android:id="@+id/activity_exercise_detailed_sets_minus_button"
+                android:id="@+id/activity_exercise_detailed_sets_plus_button"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="100dp"
                 android:textAlignment="center"
-                app:icon="@drawable/subtract_icon"
+                app:icon="@drawable/add_icon"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_detailed_sets_amount_textview"
@@ -222,12 +234,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_sets_textview" />
 
             <Button
-                android:id="@+id/activity_exercise_detailed_sets_plus_button"
+                android:id="@+id/activity_exercise_detailed_sets_minus_button"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
                 android:textAlignment="center"
-                app:icon="@drawable/add_icon"
+                app:icon="@drawable/subtract_icon"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_detailed_sets_amount_textview"
@@ -241,7 +253,7 @@
         android:id="@+id/activity_exercise_detailed_cancle_button"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="cancle"
+        android:text="cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/activity_exercise_detailed_done_button"
         app:layout_constraintHorizontal_bias="0.5"

@@ -4,8 +4,10 @@ import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import at.fhooe.mc.fitcom.R
+import at.fhooe.mc.fitcom.ui.exercises.exercisePool.ExerciseDetailedActivity
 import at.fhooe.mc.fitcom.ui.exercises.exercisePool.ExercisePoolActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -30,11 +32,9 @@ class ExerciseAdapter (val exercises: ArrayList<String>, val weights: ArrayList<
         holder.mSets.text = sets[position].toString() + " sets"
 
         holder.mCardView.setOnClickListener {
+            holder.mRoot.context.startActivity(Intent(holder.mRoot.context, ExerciseDetailedActivity::class.java))
             holder.mCardView.isChecked = true   //TODO ("Change to open new activity")
         }
-
-
-
     }
 
     override fun getItemCount(): Int {

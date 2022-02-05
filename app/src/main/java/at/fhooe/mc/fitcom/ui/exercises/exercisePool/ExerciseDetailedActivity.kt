@@ -2,6 +2,7 @@ package at.fhooe.mc.fitcom.ui.exercises.exercisePool
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import at.fhooe.mc.fitcom.R
@@ -12,9 +13,9 @@ class ExerciseDetailedActivity : AppCompatActivity() {
     private lateinit var binding: ActivityExerciseDetailedBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_exercise_detailed)
 
         binding = ActivityExerciseDetailedBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // plus button pressed, increase sets by 1
         binding.activityExerciseDetailedSetsPlusButton.setOnClickListener {
@@ -47,13 +48,17 @@ class ExerciseDetailedActivity : AppCompatActivity() {
         }
 
         // minus button pressed, decrease weight by 0.5
-        binding.activityExerciseDetailedWeightPlusButton.setOnClickListener {
+        binding.activityExerciseDetailedWeightMinusButton.setOnClickListener {
             var amountSets = binding.activityExerciseDetailedWeightAmountTextview.text.toString().toFloat() - 0.5f
             binding.activityExerciseDetailedWeightAmountTextview.text = amountSets.toString()
         }
 
         binding.activityExerciseDetailedCancleButton.setOnClickListener {
             finish()
+        }
+
+        binding.activityExerciseDetailedDoneButton.setOnClickListener {
+            //TODO
         }
     }
 }
