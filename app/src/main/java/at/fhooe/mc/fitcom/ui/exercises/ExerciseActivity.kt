@@ -42,6 +42,9 @@ class ExerciseActivity : AppCompatActivity() {
         supportActionBar?.title = mName
 
 
+        //TODO remove after testing
+        mAdapter = ExerciseAdapter(mExerciseNames, mWeights, mReps, mSets)
+
         if (mAuth.currentUser != null) {
 
 
@@ -75,7 +78,7 @@ class ExerciseActivity : AppCompatActivity() {
 
         binding.activityExerciseFabAddExercise.setOnClickListener{
 
-            it.context.startActivity(Intent(it.context, ExercisePoolActivity::class.java))
+            startActivity(Intent(binding.root.context, ExercisePoolActivity::class.java))
 
 
             mAdapter.addItem("Bench Press", 50F, 6, 3)

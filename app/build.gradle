@@ -52,10 +52,16 @@ dependencies {
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:29.0.4')
 
-    //Firebase Libraries
+    // Firebase Libraries
     implementation 'com.google.firebase:firebase-auth:21.0.1'
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
     // Graph
     implementation "com.github.PhilJay:MPAndroidChart:v3.1.0"
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
+    //GSON Converter
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 }
