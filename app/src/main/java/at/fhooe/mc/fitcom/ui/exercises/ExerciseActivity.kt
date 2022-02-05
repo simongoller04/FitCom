@@ -1,7 +1,10 @@
 package at.fhooe.mc.fitcom.ui.exercises
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
 import at.fhooe.mc.fitcom.R
 import at.fhooe.mc.fitcom.databinding.ActivityExerciseBinding
 import at.fhooe.mc.fitcom.databinding.ActivityMainBinding
@@ -23,6 +26,5 @@ class ExerciseActivity : AppCompatActivity() {
         }
 
         supportActionBar?.title = mName
-
     }
 }
