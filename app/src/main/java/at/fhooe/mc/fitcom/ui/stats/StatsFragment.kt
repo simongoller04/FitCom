@@ -85,7 +85,7 @@ class StatsFragment : Fragment() {
     }
 
     /**
-     * Helper method for the setup of the chart
+     * Helper method for the setup of the Chart
      */
     private fun lineChartSetup (view: View) {
 
