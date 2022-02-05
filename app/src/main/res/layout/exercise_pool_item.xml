@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:alpha="1">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/exercise_pool_rectangle"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_corner_rectangle"
+            android:backgroundTint="@android:color/darker_gray"
+            android:paddingTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/exercise_pool_icon"
+            android:layout_width="54dp"
+            android:layout_height="55dp"
+            android:src="@drawable/p_icon"
+            android:tint="@color/colorDialog"
+            app:layout_constraintBottom_toBottomOf="@+id/exercise_pool_rectangle"
+            app:layout_constraintStart_toStartOf="@+id/exercise_pool_rectangle"
+            app:layout_constraintTop_toTopOf="@+id/exercise_pool_rectangle" />
+
+        <TextView
+            android:id="@+id/exercise_pool_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:text="Benchpress"
+            android:textAlignment="center"
+            android:textColor="@color/colorDialog"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/exercise_pool_rectangle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/exercise_pool_rectangle"
+            app:layout_constraintTop_toTopOf="@+id/exercise_pool_rectangle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>

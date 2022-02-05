@@ -12,6 +12,8 @@ import android.view.Window
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.view.isEmpty
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+
 
 class WorkoutsFragment : Fragment() {
 
@@ -58,6 +61,8 @@ class WorkoutsFragment : Fragment() {
 
                     mWorkoutNames = it.result!!["workoutNames"] as ArrayList<String>
                     mWorkoutColors = it.result!!["workoutColors"] as ArrayList<String>
+
+                    binding.fragmentWorkoutsTextView.isVisible = mWorkoutNames.isEmpty()
 
                     mAdapter = WorkoutsAdapter(mWorkoutNames, mWorkoutColors)
 
@@ -192,6 +197,7 @@ class WorkoutsFragment : Fragment() {
                 textInputLayout.error = "Add a workout name"
             } else {
 
+                binding.fragmentWorkoutsTextView.isVisible = false
 
                 mAdapter.addItem(workoutName.toString(), workoutColor.toString())
                 dialog.cancel()

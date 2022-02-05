@@ -8,14 +8,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activity_exercise_recyclerView"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/activity_exercise_fab_add_exercise"
@@ -38,7 +38,7 @@
         app:maxImageSize="32dp" />
 
     <TextView
-        android:id="@+id/stats_workout_total_kg_lifted_textview"
+        android:id="@+id/activity_exercise_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add a new Exercise!"
