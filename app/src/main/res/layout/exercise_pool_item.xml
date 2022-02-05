@@ -4,52 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:alpha="1">
+    android:alpha="1"
+    android:clickable="true">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/exercise_pool_rectangle"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
-
-
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/rounded_corner_rectangle"
-            android:backgroundTint="@android:color/darker_gray"
-            android:paddingTop="5dp"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#FFFFFF"
+            app:strokeWidth="2dp">
 
-        <ImageView
-            android:id="@+id/exercise_pool_icon"
-            android:layout_width="54dp"
-            android:layout_height="55dp"
-            android:src="@drawable/p_icon"
-            android:tint="@color/colorDialog"
-            app:layout_constraintBottom_toBottomOf="@+id/exercise_pool_rectangle"
-            app:layout_constraintStart_toStartOf="@+id/exercise_pool_rectangle"
-            app:layout_constraintTop_toTopOf="@+id/exercise_pool_rectangle" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/exercise_pool_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="29dp"
-            android:text="Benchpress"
-            android:textAlignment="center"
-            android:textColor="@color/colorDialog"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/exercise_pool_rectangle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/exercise_pool_rectangle"
-            app:layout_constraintTop_toTopOf="@+id/exercise_pool_rectangle" />
+                <TextView
+                    android:id="@+id/exercise_pool_textView_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="29dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:text="Benchpress"
+                    android:textAlignment="center"
+                    android:textColor="@color/textField"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/exercise_pool_textView_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Category"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/exercise_pool_textView_name"
+                    app:layout_constraintTop_toBottomOf="@+id/exercise_pool_textView_name" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

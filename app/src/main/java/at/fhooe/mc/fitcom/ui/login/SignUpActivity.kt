@@ -40,10 +40,10 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener{
 
     //to create a new user
     private fun createUser() {
-        var email = binding.activitySignUpTextInputLayoutEmail.editText?.text
-        var password = binding.activitySignUpTextInputLayoutPassword.editText?.text
-        var confirmPassword = binding.activitySignUpTextInputLayoutConfirmPassword.editText?.text
-        var firstName = binding.activitySignUpTextInputLayoutFirstName.editText?.text
+        val email = binding.activitySignUpTextInputLayoutEmail.editText?.text
+        val password = binding.activitySignUpTextInputLayoutPassword.editText?.text
+        val confirmPassword = binding.activitySignUpTextInputLayoutConfirmPassword.editText?.text
+        val firstName = binding.activitySignUpTextInputLayoutFirstName.editText?.text
 
         if (email.isNullOrEmpty() || password.isNullOrEmpty() || confirmPassword.isNullOrEmpty() || firstName.isNullOrEmpty()) {
             if (email.isNullOrEmpty()) {

@@ -102,4 +102,9 @@
         <item name="android:textCursorDrawable">@color/textField</item>
         <item name="boxStrokeWidthFocused">2dp</item>
     </style>
+
+    <style name="CustomChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/background_color_chip_state_list</item>
+        <item name="android:textColor">@color/text_color_chip_state_list</item>
+    </style>
 </resources>
