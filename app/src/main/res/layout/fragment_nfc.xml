@@ -7,15 +7,16 @@
     tools:context=".ui.nfc.NFCFragment">
 
     <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/fragment_nfc_gifImageView"
+        android:id="@+id/fragment_nfc_lock_gifImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="131dp"
-        android:src="@drawable/open_lock"
+        android:src="@drawable/lock"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/text_home"
@@ -30,5 +31,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/fragment_nfc_GifStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Lock / Unlock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
