@@ -6,6 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".ui.exercises.exercisePool.ExerciseDetailedActivity">
 
+    <Button
+        android:id="@+id/activity_exercise_detailed_cancle_button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/activity_exercise_detailed_done_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_weight_cardview" />
+
+    <Button
+        android:id="@+id/activity_exercise_detailed_done_button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/activity_exercise_detailed_cancle_button"
+        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_weight_cardview" />
+
+    <ImageView
+        android:id="@+id/activity_exercise_detailed_imageView"
+        android:layout_width="165dp"
+        android:layout_height="165dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_name"
+        app:srcCompat="@drawable/ic_exercises" />
+
     <TextView
         android:id="@+id/activity_exercise_detailed_name"
         android:layout_width="wrap_content"
@@ -20,15 +52,78 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/activity_exercise_detailed_imageView"
-        android:layout_width="165dp"
-        android:layout_height="165dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/activity_exercise_detailed_sets_cardview"
+        android:layout_width="0dp"
+        android:layout_height="84dp"
         android:layout_marginTop="16dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_name"
-        app:srcCompat="@drawable/ic_exercises" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_imageView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:contextClickable="true">
+
+            <Button
+                android:id="@+id/activity_exercise_detailed_sets_plus_button"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="100dp"
+                android:textAlignment="center"
+                app:icon="@drawable/add_icon"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_detailed_sets_amount_textview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/activity_exercise_detailed_sets_amount_textview"
+                app:layout_constraintVertical_bias="0.476" />
+
+            <Button
+                android:id="@+id/activity_exercise_detailed_sets_minus_button"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:textAlignment="center"
+                app:icon="@drawable/subtract_icon"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_detailed_sets_amount_textview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/activity_exercise_detailed_sets_amount_textview"
+                app:layout_constraintVertical_bias="0.476" />
+
+            <TextView
+                android:id="@+id/activity_exercise_detailed_sets_amount_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="3"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_sets_textview" />
+
+            <TextView
+                android:id="@+id/activity_exercise_detailed_sets_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Sets"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/activity_exercise_detailed_weight_cardview"
@@ -62,31 +157,6 @@
                 app:layout_constraintTop_toTopOf="@+id/activity_exercise_detailed_weight_amount_textview"
                 app:layout_constraintVertical_bias="0.476" />
 
-            <TextView
-                android:id="@+id/activity_exercise_detailed_weight_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Weight (kg)"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/activity_exercise_detailed_weight_amount_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="20.0"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_weight_textview" />
-
             <Button
                 android:id="@+id/activity_exercise_detailed_weight_minus_button"
                 android:layout_width="40dp"
@@ -100,6 +170,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/activity_exercise_detailed_weight_amount_textview"
                 app:layout_constraintVertical_bias="0.476" />
+
+            <TextView
+                android:id="@+id/activity_exercise_detailed_weight_amount_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="20.0"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_weight_textview" />
+
+            <TextView
+                android:id="@+id/activity_exercise_detailed_weight_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Weight (kg)"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -135,31 +230,6 @@
                 app:layout_constraintTop_toTopOf="@+id/activity_exercise_detailed_reps_amount_textview"
                 app:layout_constraintVertical_bias="0.476" />
 
-            <TextView
-                android:id="@+id/activity_exercise_detailed_reps_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Reps"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/activity_exercise_detailed_reps_amount_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="20"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_reps_textview" />
-
             <Button
                 android:id="@+id/activity_exercise_detailed_reps_minus_button"
                 android:layout_width="40dp"
@@ -173,102 +243,32 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/activity_exercise_detailed_reps_amount_textview"
                 app:layout_constraintVertical_bias="0.476" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/activity_exercise_detailed_sets_cardview"
-        android:layout_width="0dp"
-        android:layout_height="84dp"
-        android:layout_marginTop="16dp"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_imageView">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="true"
-            android:contextClickable="true">
-
-            <Button
-                android:id="@+id/activity_exercise_detailed_sets_plus_button"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="100dp"
-                android:textAlignment="center"
-                app:icon="@drawable/add_icon"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_detailed_sets_amount_textview"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/activity_exercise_detailed_sets_amount_textview"
-                app:layout_constraintVertical_bias="0.476" />
 
             <TextView
-                android:id="@+id/activity_exercise_detailed_sets_textview"
+                android:id="@+id/activity_exercise_detailed_reps_amount_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="20"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_reps_textview" />
+
+            <TextView
+                android:id="@+id/activity_exercise_detailed_reps_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Sets"
+                android:text="Reps"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/activity_exercise_detailed_sets_amount_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="3"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_sets_textview" />
-
-            <Button
-                android:id="@+id/activity_exercise_detailed_sets_minus_button"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
-                android:textAlignment="center"
-                app:icon="@drawable/subtract_icon"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_detailed_sets_amount_textview"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/activity_exercise_detailed_sets_amount_textview"
-                app:layout_constraintVertical_bias="0.476" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/activity_exercise_detailed_cancle_button"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/activity_exercise_detailed_done_button"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_weight_cardview" />
-
-    <Button
-        android:id="@+id/activity_exercise_detailed_done_button"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Done"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/activity_exercise_detailed_cancle_button"
-        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_weight_cardview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
