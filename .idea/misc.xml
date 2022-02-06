@@ -7,25 +7,31 @@
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.343" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.196" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.343" />
-        <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/drawable/ic_outline_info_24_outlined.xml" value="0.343" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/drawable/ic_stats.xml" value="0.196" />
-        <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/activity_exercise.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/activity_exercise_detailed.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/activity_exercise_pool.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/activity_sign_up.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/dialog_add_body_weight.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/dialog_add_exercise.xml" value="0.67" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/dialog_add_workout.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/dialog_change_section_color.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/exercise_pool_item.xml" value="0.4510416666666667" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/fragment_dashboard.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/fragment_exercises.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/fragment_nfc.xml" value="0.20104166666666667" />
-        <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/fragment_stats.xml" value="0.5" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/layout/fragment_workouts.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Sebastian/AndroidStudioProjects/Fitcom/app/src/main/res/menu/bottom_nav_menu.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/Simon Goller/androidStudioProjects/Fitcom/app/src/main/res/layout/activity_exercise.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/Simon Goller/androidStudioProjects/Fitcom/app/src/main/res/layout/activity_exercise_detailed.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Simon Goller/androidStudioProjects/Fitcom/app/src/main/res/layout/activity_exercise_pool.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Simon Goller/androidStudioProjects/Fitcom/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/Simon Goller/androidStudioProjects/Fitcom/app/src/main/res/layout/activity_sign_up.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/Simon Goller/androidStudioProjects/Fitcom/app/src/main/res/layout/dialog_add_body_weight.xml" value="0.25" />
+        <entry key="..\:/Users/Simon Goller/androidStudioProjects/Fitcom/app/src/main/res/layout/dialog_add_exercise.xml" value="0.5" />
+        <entry key="..\:/Users/Simon Goller/androidStudioProjects/Fitcom/app/src/main/res/layout/dialog_add_workout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Simon Goller/androidStudioProjects/Fitcom/app/src/main/res/layout/dialog_forgot_password.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/Simon Goller/androidStudioProjects/Fitcom/app/src/main/res/layout/fragment_stats.xml" value="0.33" />
+        <entry key="..\:/Users/Simon Goller/androidStudioProjects/Fitcom/app/src/main/res/layout/fragment_workouts.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Simon Goller/androidStudioProjects/Fitcom/app/src/main/res/menu/bottom_nav_menu.xml" value="0.21458333333333332" />
+        <entry key="..\:/Users/Simon Goller/androidStudioProjects/Fitcom/app/src/main/res/menu/top_nav_menu.xml" value="0.21458333333333332" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.3225" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/drawable/p_icon.xml" value="0.326" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/drawable/rounded_corner_rectangle.xml" value="0.3225" />
@@ -38,13 +44,12 @@
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/exercise_item.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/exercise_list_item.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/exercise_pool_item.xml" value="0.3234375" />
-        <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/fragment_nfc.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/fragment_workouts.xml" value="0.40217391304347827" />
         <entry key="..\:/Users/manue/StudioProjects/Fitcom/app/src/main/res/layout/workout_item.xml" value="0.40217391304347827" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

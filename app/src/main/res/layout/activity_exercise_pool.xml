@@ -16,9 +16,9 @@
         android:hint="Search Exercise"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/chipGroup"
-        app:layout_constraintEnd_toEndOf="@+id/chipGroup"
-        app:layout_constraintStart_toStartOf="@+id/chipGroup"
+        app:layout_constraintBottom_toTopOf="@+id/activity_exercise_pool_chipgroup"
+        app:layout_constraintEnd_toEndOf="@+id/activity_exercise_pool_chipgroup"
+        app:layout_constraintStart_toStartOf="@+id/activity_exercise_pool_chipgroup"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_pool_chipgroup" />
 
     <ProgressBar
         android:id="@+id/activity_exercise_pool_progressBar"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toTopOf="@+id/activity_exercise_pool_recyclerView" />
 
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
+        android:id="@+id/activity_exercise_pool_chipgroup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
