@@ -67,6 +67,7 @@
     <style name="customButtonStyleContained" parent="@style/Widget.MaterialComponents.Button">
         <item name="android:textSize">20sp</item>
         <item name="android:padding">10dp</item>
+        <item name="android:width">110dp</item>
         <item name="cornerRadius">10dp</item>
         <item name="elevation">5dp</item>
         <item name="rippleColor">@color/textField</item>
@@ -78,6 +79,7 @@
     <style name="customButtonStyleOutlined" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:textSize">20sp</item>
         <item name="android:padding">10dp</item>
+        <item name="android:width">110dp</item>
         <item name="strokeWidth">2dp</item>
         <item name="strokeColor">@color/primeBlue</item>
         <item name="cornerRadius">10dp</item>

@@ -8,7 +8,8 @@
 
     <Button
         android:id="@+id/activity_exercise_detailed_cancle_button"
-        android:layout_width="100dp"
+        style="@style/customButtonStyleOutlined"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="cancel"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,7 +20,8 @@
 
     <Button
         android:id="@+id/activity_exercise_detailed_done_button"
-        android:layout_width="100dp"
+        style="@style/customButtonStyleContained"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Done"
         app:layout_constraintBottom_toBottomOf="parent"
