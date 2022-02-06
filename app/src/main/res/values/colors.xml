@@ -12,4 +12,6 @@
     <color name="off_white">#F7F8E2</color>
     <color name="off_white_50">#80F7F8E2</color>
     <color name="transparent">#00000000</color>
+    <color name="primeBlue">#019EE3</color>
+
 </resources>

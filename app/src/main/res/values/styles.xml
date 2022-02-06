@@ -64,16 +64,28 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
-    <style name="customButtonStyle" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+    <style name="customButtonStyleContained" parent="@style/Widget.MaterialComponents.Button">
         <item name="android:textSize">20sp</item>
-        <item name="strokeColor">#000000</item>
-        <item name="strokeWidth">2dp</item>
         <item name="android:padding">10dp</item>
         <item name="cornerRadius">10dp</item>
+        <item name="elevation">5dp</item>
         <item name="rippleColor">@color/textField</item>
-        <item name="android:textColor">#000000</item>
+        <item name="android:textColor">#FFFFFF</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">false</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="customButtonStyleOutlined" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/primeBlue</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="elevation">5dp</item>
+        <item name="rippleColor">@color/textField</item>
+        <item name="android:textColor">@color/primeBlue</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="FloatingActionButtonStyle" parent="Widget.Design.FloatingActionButton">
@@ -106,5 +118,23 @@
     <style name="CustomChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
         <item name="chipBackgroundColor">@color/background_color_chip_state_list</item>
         <item name="android:textColor">@color/text_color_chip_state_list</item>
+    </style>
+
+    <style name="ToolBarStyle" parent="ToolBarStyle.Base"/>
+
+    <style name="ToolBarStyle.Base" parent="">
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="titleCentered">true</item>
+    </style>
+
+    <style name="ToolBarStyle.Event" parent="ToolBarStyle">
+        <item name="titleTextAppearance">@style/TextAppearance.Widget.Event.Toolbar.Title</item>
+    </style>
+
+    <style name="TextAppearance.Widget.Event.Toolbar.Title" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <!--Any text styling can be done here-->
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20dp</item>
     </style>
 </resources>

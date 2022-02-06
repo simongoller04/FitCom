@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/activity_login_button_login"
-        style="@style/customButtonStyle"
+        style="@style/customButtonStyleContained"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -20,7 +20,7 @@
 
     <Button
         android:id="@+id/activity_login_button_signup"
-        style="@style/customButtonStyle"
+        style="@style/customButtonStyleContained"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"

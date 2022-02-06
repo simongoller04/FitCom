@@ -4,10 +4,13 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import at.fhooe.mc.fitcom.R
 import at.fhooe.mc.fitcom.databinding.ActivityExercisePoolBinding
 import at.fhooe.mc.fitcom.ui.exercises.exercisePool.api.ApiInterface
 import com.google.gson.Gson
@@ -177,5 +180,21 @@ class ExercisePoolActivity : AppCompatActivity() {
             return exercisePoolData as ArrayList<ExercisePoolImagesData>
         }
         return null
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_nav_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+
+            R.id.navigation_settings -> {
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -3,8 +3,11 @@ package at.fhooe.mc.fitcom.ui.exercises.exercisePool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.ActionBar
 import at.fhooe.mc.fitcom.R
 import at.fhooe.mc.fitcom.databinding.ActivityExerciseDetailedBinding
 
@@ -13,6 +16,9 @@ class ExerciseDetailedActivity : AppCompatActivity() {
     private lateinit var binding: ActivityExerciseDetailedBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_)
 
         binding = ActivityExerciseDetailedBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -60,5 +66,26 @@ class ExerciseDetailedActivity : AppCompatActivity() {
         binding.activityExerciseDetailedDoneButton.setOnClickListener {
             //TODO
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_nav_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+
+            R.id.navigation_settings -> {
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }
