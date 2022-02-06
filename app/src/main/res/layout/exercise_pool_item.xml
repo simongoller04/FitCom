@@ -16,6 +16,7 @@
             android:id="@+id/exercise_pool_item_cardview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checkable="true"
             android:clickable="true"
             app:cardBackgroundColor="#FFFFFF"
             app:cardElevation="0dp"

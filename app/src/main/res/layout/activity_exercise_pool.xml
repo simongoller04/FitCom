@@ -58,14 +58,14 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/activity_exercise_pool_chip_arm"
+                android:id="@+id/activity_exercise_pool_chip_arms"
                 style="@style/CustomChipChoice"
-                android:layout_width="100dp"
+                android:layout_width="110dp"
                 android:layout_height="55dp"
                 android:layout_marginBottom="8dp"
                 android:checkable="true"
                 android:clickable="true"
-                android:text="Arm"
+                android:text="Arms"
                 android:textAlignment="center"
                 android:textSize="18dp"
                 app:checkedIconEnabled="false"
@@ -79,7 +79,7 @@
             <com.google.android.material.chip.Chip
                 android:id="@+id/activity_exercise_pool_chip_back"
                 style="@style/CustomChipChoice"
-                android:layout_width="100dp"
+                android:layout_width="110dp"
                 android:layout_height="55dp"
                 android:checkable="true"
                 android:clickable="true"
@@ -90,13 +90,13 @@
                 app:checkedIconVisible="false"
                 app:chipCornerRadius="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/activity_exercise_pool_chip_chest"
-                app:layout_constraintStart_toEndOf="@+id/activity_exercise_pool_chip_arm"
+                app:layout_constraintStart_toEndOf="@+id/activity_exercise_pool_chip_arms"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/activity_exercise_pool_chip_chest"
                 style="@style/CustomChipChoice"
-                android:layout_width="100dp"
+                android:layout_width="110dp"
                 android:layout_height="55dp"
                 android:checkable="true"
                 android:clickable="true"
@@ -113,7 +113,7 @@
             <com.google.android.material.chip.Chip
                 android:id="@+id/activity_exercise_pool_chip_core"
                 style="@style/CustomChipChoice"
-                android:layout_width="100dp"
+                android:layout_width="110dp"
                 android:layout_height="55dp"
                 android:checkable="true"
                 android:clickable="true"
@@ -125,12 +125,12 @@
                 app:chipCornerRadius="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/activity_exercise_pool_chip_legs"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_exercise_pool_chip_arm" />
+                app:layout_constraintTop_toBottomOf="@+id/activity_exercise_pool_chip_arms" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/activity_exercise_pool_chip_legs"
                 style="@style/CustomChipChoice"
-                android:layout_width="100dp"
+                android:layout_width="110dp"
                 android:layout_height="55dp"
                 android:checkable="true"
                 android:clickable="true"
@@ -141,18 +141,18 @@
                 app:checkedIconVisible="false"
                 app:chipCornerRadius="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_pool_chip_core"
-                app:layout_constraintEnd_toStartOf="@+id/activity_exercise_pool_chip_shoulder"
+                app:layout_constraintEnd_toStartOf="@+id/activity_exercise_pool_chip_shoulders"
                 app:layout_constraintStart_toEndOf="@+id/activity_exercise_pool_chip_core"
                 app:layout_constraintTop_toTopOf="@+id/activity_exercise_pool_chip_core" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/activity_exercise_pool_chip_shoulder"
+                android:id="@+id/activity_exercise_pool_chip_shoulders"
                 style="@style/CustomChipChoice"
-                android:layout_width="100dp"
+                android:layout_width="110dp"
                 android:layout_height="55dp"
                 android:checkable="true"
                 android:clickable="true"
-                android:text="Shoulder"
+                android:text="Shoulders"
                 android:textAlignment="center"
                 android:textSize="18dp"
                 app:checkedIconEnabled="false"
