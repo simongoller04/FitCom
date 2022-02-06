@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/exercise_pool_item_cardview"
@@ -19,13 +19,12 @@
             android:checkable="true"
             android:clickable="true"
             app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="0dp"
             app:cardElevation="0dp"
             app:cardMaxElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="#FFFFFF"
-            app:strokeWidth="2dp">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

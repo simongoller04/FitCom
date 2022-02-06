@@ -17,8 +17,11 @@ import at.fhooe.mc.fitcom.R
 import com.bumptech.glide.Glide
 
 class ExercisePoolAdapter(
-    var exercisePoolData: ArrayList<ExercisePoolFinalizedData>
+    var exercisePoolData: ArrayList<ExercisePoolFinalizedData>,
+    private val callBackInterface:CallBackInterface
 ) : RecyclerView.Adapter<ExercisePoolViewHolder>() {
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExercisePoolViewHolder {
         LayoutInflater.from(parent.context).apply {
             val root = inflate(R.layout.exercise_pool_item, null)
@@ -34,9 +37,13 @@ class ExercisePoolAdapter(
                 .into(holder.mImageView)
 
         holder.mCardView.setOnClickListener {
-            showAddExerciseDialog(holder, exercisePoolData[position].image, exercisePoolData[position].id)
-//            TODO("Open dialog to add weigth, reps and sets")
+            showAddExerciseDialog(holder, exercisePoolData[position].image, exercisePoolData[position].id, exercisePoolData[position].name)
         }
+    }
+
+    //Interface for passing Data to Activity
+    interface CallBackInterface{
+        fun passResultCallback(exerciseData: SingleCompleteExerciseData)
     }
 
     override fun getItemCount(): Int {
@@ -46,7 +53,8 @@ class ExercisePoolAdapter(
     private fun showAddExerciseDialog(
         holder: ExercisePoolViewHolder,
         image: String,
-        exerciseId: Int
+        exerciseId: Int,
+        exerciseName: String
     ) {
         val dialog = Dialog(holder.itemView.context)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -67,6 +75,9 @@ class ExercisePoolAdapter(
             //TODO add data to firebase
             holder.mCardView.isChecked = true
             dialog.dismiss()
+
+//            val completeExercise = SingleCompleteExerciseData(exerciseName, sets, reps, weight)
+//            callBackInterface.passResultCallback(completeExercise)
         }
 
         infoBtn.setOnClickListener {

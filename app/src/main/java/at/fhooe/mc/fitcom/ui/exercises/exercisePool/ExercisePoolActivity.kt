@@ -4,10 +4,14 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.Menu
+import android.widget.Filter
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import at.fhooe.mc.fitcom.R
 import at.fhooe.mc.fitcom.databinding.ActivityExercisePoolBinding
 import at.fhooe.mc.fitcom.ui.exercises.exercisePool.api.ApiInterface
 import com.google.gson.Gson
@@ -15,6 +19,8 @@ import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class ExercisePoolActivity : AppCompatActivity() {
@@ -23,6 +29,8 @@ class ExercisePoolActivity : AppCompatActivity() {
     private var mExerciseData: ArrayList<ExercisePoolData>? = null
     private var mImagesData: ArrayList<ExercisePoolImagesData>? = null
     private var mFinalizedData: ArrayList<ExercisePoolFinalizedData>? = null
+    private lateinit var mTempArrayList: ArrayList<ExercisePoolFinalizedData>
+    private var mFilteredData: ArrayList<ExercisePoolFinalizedData> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +46,15 @@ class ExercisePoolActivity : AppCompatActivity() {
         } else {
             loadFromSharedPreferences()
         }
+
+        mTempArrayList = arrayListOf<ExercisePoolFinalizedData>()
+
+        binding.activityExercisePoolRecyclerView.addItemDecoration(
+            DividerItemDecoration(
+                this@ExercisePoolActivity,
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
         binding.activityExercisePoolChipArms.setOnClickListener {
 
@@ -61,6 +78,62 @@ class ExercisePoolActivity : AppCompatActivity() {
 
         binding.activityExercisePoolChipShoulders.setOnClickListener {
 
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menuInflater.inflate(R.menu.top_nav_menu_search, menu)
+        val item = menu?.findItem(R.id.search_action)
+        val searchView = item?.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                populateRecyclerView(mTempArrayList)
+                mTempArrayList.clear()
+                val searchText = newText!!.lowercase(Locale.getDefault())
+                if(searchText.isNotEmpty()){
+                    mFinalizedData?.forEach {
+
+                        if(it.name.lowercase(Locale.getDefault()).contains(searchText)){
+                            mTempArrayList.add(it)
+                        }
+                    }
+                    binding.activityExercisePoolRecyclerView.adapter!!.notifyDataSetChanged()
+                } else {
+
+                    mTempArrayList.clear()
+                    mTempArrayList.addAll(mFinalizedData!!)
+                    binding.activityExercisePoolRecyclerView.adapter!!.notifyDataSetChanged()
+                }
+
+                return false
+            }
+
+        })
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    fun getFilter(): Filter {
+        return object : Filter() {
+
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charString = constraint?.toString() ?: ""
+                for (data: ExercisePoolFinalizedData in mFinalizedData!!) {
+
+                    if (charString == data.category.toString()) {
+                        mFilteredData?.add(data)
+                    }
+                }
+                return FilterResults().apply { values = mFilteredData }
+            }
+
+            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+
+            }
         }
     }
 
@@ -116,12 +189,6 @@ class ExercisePoolActivity : AppCompatActivity() {
             ExercisePoolAdapter(data)
         binding.activityExercisePoolRecyclerView.layoutManager =
             LinearLayoutManager(this@ExercisePoolActivity)
-        binding.activityExercisePoolRecyclerView.addItemDecoration(
-            DividerItemDecoration(
-                this@ExercisePoolActivity,
-                DividerItemDecoration.VERTICAL
-            )
-        )
     }
 
     private fun saveFinalizedData(data: ArrayList<ExercisePoolFinalizedData>) {
@@ -174,6 +241,9 @@ class ExercisePoolActivity : AppCompatActivity() {
                 }
             }
         }
+
+        mTempArrayList.addAll(mFinalizedData!!)
+
         saveFinalizedData(mFinalizedData!!)
         populateRecyclerView(mFinalizedData!!)
     }

@@ -30,27 +30,22 @@ class NFCFragment : Fragment() {
         val homeViewModel =
             ViewModelProvider(this).get(NFCViewModel::class.java)
 
-
         _binding = FragmentNfcBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
         gif = GifDrawable(resources, R.drawable.lock)
         binding.fragmentNfcLockGifImageView.setImageDrawable(gif)
-
 
         val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
 
-
         gif.stop()
-
 
         binding.fragmentNfcGifStart.setOnClickListener {
 
-            if(flag) {
+            if (flag) {
                 gif = GifDrawable(resources, R.drawable.lock)
                 binding.fragmentNfcLockGifImageView.setImageDrawable(gif)
                 gif.start()
@@ -62,8 +57,6 @@ class NFCFragment : Fragment() {
                 flag = true
             }
         }
-
-
 
         return root
     }
