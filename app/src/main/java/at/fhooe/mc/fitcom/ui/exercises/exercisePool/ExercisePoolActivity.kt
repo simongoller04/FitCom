@@ -2,6 +2,7 @@ package at.fhooe.mc.fitcom.ui.exercises.exercisePool
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import at.fhooe.mc.fitcom.databinding.ActivityExercisePoolBinding
 import at.fhooe.mc.fitcom.ui.exercises.exercisePool.api.ApiInterface
 import com.google.gson.Gson
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,8 +20,8 @@ import retrofit2.Response
 class ExercisePoolActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityExercisePoolBinding
-    private var mExerciseNames = ArrayList<String>()
-    private var mExerciseIcons = ArrayList<Drawable>()
+    private lateinit var mExerciseData: ArrayList<ExercisePoolData>
+    private lateinit var mImagesData: ArrayList<ExercisePoolImagesData>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +31,11 @@ class ExercisePoolActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Exercises"
 
-        if (!loadData()) {
+        if (!loadFromSharedPreferences()) {
             binding.activityExercisePoolProgressBar.isVisible = true
-            apiCall()
+            fetchExerciseData()
+        } else {
+            loadFromSharedPreferences()
         }
 
         binding.activityExercisePoolChipArm.setOnClickListener {
@@ -59,7 +63,8 @@ class ExercisePoolActivity : AppCompatActivity() {
         }
     }
 
-    private fun apiCall() {
+    //TODO not really efficient
+    private fun fetchExerciseData() {
         val apiInterface = ApiInterface.create().getExercises()
         apiInterface.enqueue(object : Callback<ExercisePoolDataResult> {
             override fun onResponse(
@@ -69,20 +74,45 @@ class ExercisePoolActivity : AppCompatActivity() {
                 if (response?.body() != null) {
                     val resultFinal = response!!.body() as ExercisePoolDataResult
                     saveData(resultFinal.results)
-                    populateRecyclerView(resultFinal.results)
-                    binding.activityExercisePoolProgressBar.isVisible = false
+                    mExerciseData = resultFinal.results
+
+                    //fetch images
+                    val apiInterfaceImages = ApiInterface.create().getImages()
+                    apiInterfaceImages.enqueue(object : Callback<ExercisePoolImagesDataResult> {
+                        override fun onResponse(
+                            call: Call<ExercisePoolImagesDataResult>?,
+                            response: Response<ExercisePoolImagesDataResult>?
+                        ) {
+                            if (response?.body() != null) {
+                                val resultFinal = response!!.body() as ExercisePoolImagesDataResult
+                                saveImages(resultFinal.results)
+                                mImagesData = resultFinal.results
+                                populateRecyclerView(mExerciseData, mImagesData)
+                                binding.activityExercisePoolProgressBar.isVisible = false
+                            }
+                        }
+                        override fun onFailure(
+                            call: Call<ExercisePoolImagesDataResult>?,
+                            t: Throwable?
+                        ) {
+                            Log.e("ExercisePoolActivity::fetchImages", "Fetching Images failed $t")
+                        }
+                    })
                 }
             }
 
             override fun onFailure(call: Call<ExercisePoolDataResult>?, t: Throwable?) {
-                Log.e("ExercisePoolActivity::apiCall", "Fetching Data failed $t")
+                Log.e("ExercisePoolActivity::fetchData", "Fetching Data failed $t")
             }
         })
     }
 
-    private fun populateRecyclerView(data: ArrayList<ExercisePoolData>) {
+    private fun populateRecyclerView(
+        data: ArrayList<ExercisePoolData>,
+        images: ArrayList<ExercisePoolImagesData>
+    ) {
         binding.activityExercisePoolRecyclerView.adapter =
-            ExercisePoolAdapter(data)
+            ExercisePoolAdapter(data, images)
         binding.activityExercisePoolRecyclerView.layoutManager =
             LinearLayoutManager(this@ExercisePoolActivity)
         binding.activityExercisePoolRecyclerView.addItemDecoration(
@@ -103,7 +133,27 @@ class ExercisePoolActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadData(): Boolean {
+    private fun saveImages(data: ArrayList<ExercisePoolImagesData>) {
+        val json = Gson().toJson(data)
+        val sharedPref =
+            getSharedPreferences("at.fhooe.mc.fitcom.exercisePoolActivity", MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putString("exerciseImages", json.toString())
+            apply()
+        }
+    }
+
+    private fun loadFromSharedPreferences(): Boolean {
+        val exerciseData = loadData()
+        val imagesData = loadImages()
+        if (exerciseData != null && imagesData != null) {
+            populateRecyclerView(exerciseData, imagesData)
+            return true
+        }
+        return false
+    }
+
+    private fun loadData(): ArrayList<ExercisePoolData>? {
         val sharedPref =
             getSharedPreferences("at.fhooe.mc.fitcom.exercisePoolActivity", MODE_PRIVATE)
         val gson = Gson()
@@ -111,11 +161,21 @@ class ExercisePoolActivity : AppCompatActivity() {
         if (json != null) {
             val exercisePoolData: List<ExercisePoolData> =
                 Gson().fromJson(json, Array<ExercisePoolData>::class.java).toList()
-            populateRecyclerView(exercisePoolData as ArrayList<ExercisePoolData>)
-            return true
+            return exercisePoolData as ArrayList<ExercisePoolData>
         }
-        return false
+        return null
     }
 
-
+    private fun loadImages(): ArrayList<ExercisePoolImagesData>? {
+        val sharedPref =
+            getSharedPreferences("at.fhooe.mc.fitcom.exercisePoolActivity", MODE_PRIVATE)
+        val gson = Gson()
+        val json = sharedPref.getString("exerciseImages", null)
+        if (json != null) {
+            val exercisePoolData: List<ExercisePoolImagesData> =
+                Gson().fromJson(json, Array<ExercisePoolImagesData>::class.java).toList()
+            return exercisePoolData as ArrayList<ExercisePoolImagesData>
+        }
+        return null
+    }
 }

@@ -13,6 +13,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/exercise_pool_item_cardview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -29,8 +30,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <ImageView
+                    android:id="@+id/exercise_pool_item_imageView"
+                    android:layout_width="50dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_exercises" />
+
                 <TextView
-                    android:id="@+id/exercise_pool_textView_name"
+                    android:id="@+id/exercise_pool_item_textView_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Category"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/exercise_pool_item_textView_name"
+                    app:layout_constraintTop_toBottomOf="@+id/exercise_pool_item_textView_name" />
+
+                <TextView
+                    android:id="@+id/exercise_pool_item_textView_name"
                     android:layout_width="wrap_content"
                     android:layout_height="29dp"
                     android:layout_marginStart="16dp"
@@ -39,18 +62,8 @@
                     android:textAlignment="center"
                     android:textColor="@color/textField"
                     android:textSize="20dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/exercise_pool_item_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/exercise_pool_textView_category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:text="Category"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/exercise_pool_textView_name"
-                    app:layout_constraintTop_toBottomOf="@+id/exercise_pool_textView_name" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>

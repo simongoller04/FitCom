@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,11 +59,11 @@ class StatsFragment : Fragment() {
         val root: View = binding.root
 
 
-        // general settings for the chart
-        lineChartSetup(root)
-
         // Enter data into the chart
         entries = ArrayList<Entry>()
+
+        // general settings for the chart
+        lineChartSetup(root)
 
         lineDataSet = LineDataSet(entries, "Entries")
         lineData = LineData(lineDataSet)
@@ -107,7 +108,9 @@ class StatsFragment : Fragment() {
             setDrawAxisLine(false)
             textColor = Color.WHITE
             textSize = 15f
-            axisMinimum = 1f
+
+            Log.e("*'***********", "${entries.size}")
+            axisMinimum = 0F
             isGranularityEnabled = true
             granularity = 1f
             setDrawGridLines(false)
@@ -141,7 +144,9 @@ class StatsFragment : Fragment() {
             // disable the labels of every entry
             setDrawValues(false)
 
-            mode = LineDataSet.Mode.CUBIC_BEZIER
+            //round graph
+//            mode = LineDataSet.Mode.CUBIC_BEZIER
+
             setDrawFilled(true)
             fillDrawable = ContextCompat.getDrawable(context, R.drawable.line_gradient)
         }
@@ -177,7 +182,6 @@ class StatsFragment : Fragment() {
             currentWeight.text = currentString
 
             lineDataSet.addEntry(Entry(entries.size.toFloat(), weight))
-            entries.add(Entry(entries.size.toFloat(), weight))
 
             lineData.notifyDataChanged()
             lineChart.notifyDataSetChanged()

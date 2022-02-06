@@ -11,12 +11,12 @@
         android:id="@+id/stats_gained_constraintLayout"
         android:layout_width="165dp"
         android:layout_height="86dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="#DFDFDF"
-        android:elevation="10dp"
+        android:elevation="5dp"
         app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -66,11 +66,10 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="#015a81"
-        android:elevation="10dp"
+        android:elevation="5dp"
         android:outlineAmbientShadowColor="#817D7D"
         android:outlineSpotShadowColor="#817D7D"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stats_gained_constraintLayout">
 
@@ -84,9 +83,8 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="#DFDFDF"
-        android:elevation="10dp"
+        android:elevation="5dp"
         app:layout_constraintEnd_toStartOf="@+id/stats_total_kg_lifted_constraintLayout"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_stats_lineChart">
 
@@ -121,9 +119,8 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="#DFDFDF"
-        android:elevation="10dp"
+        android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/stats_workouts_completed_constraintLayout_"
         app:layout_constraintTop_toBottomOf="@+id/fragment_stats_lineChart">
 
@@ -156,10 +153,11 @@
         android:layout_width="165dp"
         android:layout_height="86dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="#DFDFDF"
+        android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/stats_gained_constraintLayout"
         app:layout_constraintTop_toTopOf="parent">
 
