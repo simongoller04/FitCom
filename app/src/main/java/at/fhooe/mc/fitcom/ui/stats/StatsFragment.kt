@@ -83,24 +83,27 @@ class StatsFragment : Fragment() {
                     mWeightArray = it.result!!["weightArray"] as ArrayList<Float>
                     mPrevWeight = (it.result!!["weightPrev"] as Double).toFloat()
                     mCurrentWeight = (it.result!!["weight"] as Double).toFloat()
-                    binding.statsWorkoutTotalKgLiftedAmountTextview.text = (it.result!!["totalWeightLifted"] as Double).toInt().toString()
-                    binding.statsWorkoutsCompletedAmountTextview.text = (it.result!!["workoutsCompleted"] as Long).toString()
+                    binding.statsWorkoutTotalKgLiftedAmountTextview.text =
+                        (it.result!!["totalWeightLifted"] as Double).toInt().toString()
+                    binding.statsWorkoutsCompletedAmountTextview.text =
+                        (it.result!!["workoutsCompleted"] as Long).toString()
 
                     weight = mCurrentWeight
                     prevWeight = mPrevWeight
 
-                    mWeightArray.forEach{
+                    mWeightArray.forEach {
                         lineDataSet.addEntry(Entry(entries.size.toFloat(), it))
                     }
 
-                    binding.statsCurrentWeightAmountTextview.text = mCurrentWeight.toString() + " kg"
-                    val gainedAmount = mCurrentWeight - mPrevWeight
-                    if (gainedAmount < 0){
+                    binding.statsCurrentWeightAmountTextview.text =
+                        mCurrentWeight.toString() + " kg"
+                    val gainedAmount = String.format("%.1f", mCurrentWeight - mPrevWeight).toFloat()
+                    if (gainedAmount < 0) {
                         binding.statsGainedAmountTextview.text = gainedAmount.toString() + " kg"
-                    }else{
-                        binding.statsGainedAmountTextview.text = "+" + gainedAmount.toString() + " kg"
+                    } else {
+                        binding.statsGainedAmountTextview.text =
+                            "+" + gainedAmount.toString() + " kg"
                     }
-
 
                     lineData.notifyDataChanged()
                     lineChart.notifyDataSetChanged()
@@ -123,7 +126,8 @@ class StatsFragment : Fragment() {
 
         styleLineDataSet(root.context)
 
-        var floatingActionButton: FloatingActionButton = root.findViewById(R.id.naviagtion_stats_floatingActionButton)
+        var floatingActionButton: FloatingActionButton =
+            root.findViewById(R.id.naviagtion_stats_floatingActionButton)
         floatingActionButton.setOnClickListener {
             showAddBodyWeightDialog(root)
         }
@@ -139,7 +143,7 @@ class StatsFragment : Fragment() {
     /**
      * Helper method for the setup of the Chart
      */
-    private fun lineChartSetup (view: View) {
+    private fun lineChartSetup(view: View) {
 
         lineChart = view.findViewById(R.id.fragment_stats_lineChart)
         lineChart.extraBottomOffset = 5f
@@ -160,7 +164,6 @@ class StatsFragment : Fragment() {
             textColor = Color.WHITE
             textSize = 15f
 
-            Log.e("*'***********", "${entries.size}")
             axisMinimum = 0F
             isGranularityEnabled = true
             granularity = 1f
@@ -217,6 +220,8 @@ class StatsFragment : Fragment() {
         val cancelButton: Button = dialog.findViewById(R.id.dialog_add_body_weight_button_cancle)
         val weightText: EditText = dialog.findViewById(R.id.dialog_add_body_weight_text)
 
+        weightText.text = mCurrentWeight.toString().toEditable()
+
         currentWeight = view.findViewById(R.id.stats_current_weight_amount_textview)
         gainedWeight = view.findViewById(R.id.stats_gained_amount_textview)
 
@@ -224,11 +229,10 @@ class StatsFragment : Fragment() {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
 
-        weightText.text = prevWeight.toString().toEditable()
-
         addButton.setOnClickListener {
 
             mPrevWeight = weight
+            prevWeight = weight
             weight = weightText.text.toString().toFloat()
 
             mCurrentWeight = weight
@@ -254,7 +258,6 @@ class StatsFragment : Fragment() {
             }
 
             gainedWeight.text = gainedString
-            prevWeight = weight
 
             // hide keyboard
             imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
@@ -283,5 +286,5 @@ class StatsFragment : Fragment() {
     /**
      * Helper function to format a String into an Editable
      */
-    fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)
+    fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 }
