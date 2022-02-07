@@ -15,17 +15,24 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import at.fhooe.mc.fitcom.R
 import at.fhooe.mc.fitcom.databinding.FragmentStatsBinding
+import at.fhooe.mc.fitcom.ui.workouts.WorkoutsAdapter
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlin.collections.ArrayList
 
 
@@ -47,6 +54,13 @@ class StatsFragment : Fragment() {
     private var weight: Float = 0.0f
     private var prevWeight: Float = 0.0f
 
+    private var mAuth = FirebaseAuth.getInstance()
+    private var mDb = Firebase.firestore
+
+    private var mWeightArray = ArrayList<Float>()
+    private var mCurrentWeight = 0f
+    private var mPrevWeight = 0f
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -58,9 +72,46 @@ class StatsFragment : Fragment() {
         _binding = FragmentStatsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
         // Enter data into the chart
         entries = ArrayList<Entry>()
+
+        if (mAuth.currentUser != null) {
+
+            mDb.collection("users").document(mAuth.uid.toString()).get().addOnCompleteListener() {
+                if (it.isSuccessful) {
+
+                    mWeightArray = it.result!!["weightArray"] as ArrayList<Float>
+                    mPrevWeight = (it.result!!["weightPrev"] as Double).toFloat()
+                    mCurrentWeight = (it.result!!["weight"] as Double).toFloat()
+                    binding.statsWorkoutTotalKgLiftedAmountTextview.text = (it.result!!["totalWeightLifted"] as Double).toInt().toString()
+                    binding.statsWorkoutsCompletedAmountTextview.text = (it.result!!["workoutsCompleted"] as Long).toString()
+
+                    weight = mCurrentWeight
+                    prevWeight = mPrevWeight
+
+                    mWeightArray.forEach{
+                        lineDataSet.addEntry(Entry(entries.size.toFloat(), it))
+                    }
+
+                    binding.statsCurrentWeightAmountTextview.text = mCurrentWeight.toString() + " kg"
+                    val gainedAmount = mCurrentWeight - mPrevWeight
+                    if (gainedAmount < 0){
+                        binding.statsGainedAmountTextview.text = gainedAmount.toString() + " kg"
+                    }else{
+                        binding.statsGainedAmountTextview.text = "+" + gainedAmount.toString() + " kg"
+                    }
+
+
+                    lineData.notifyDataChanged()
+                    lineChart.notifyDataSetChanged()
+                    lineChart.invalidate()
+
+                } else {
+                    Toast.makeText(binding.root.context, "Fetching Data failed!", Toast.LENGTH_LONG)
+                        .show()
+                }
+            }
+        }
 
         // general settings for the chart
         lineChartSetup(root)
@@ -177,7 +228,12 @@ class StatsFragment : Fragment() {
 
         addButton.setOnClickListener {
 
+            mPrevWeight = weight
             weight = weightText.text.toString().toFloat()
+
+            mCurrentWeight = weight
+            mWeightArray.add(weight)
+
             var currentString = "$weight kg"
             currentWeight.text = currentString
 
@@ -212,6 +268,16 @@ class StatsFragment : Fragment() {
         }
 
         dialog.show()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mDb.collection("users").document(mAuth.uid.toString()).update(
+            "weightArray",
+            mWeightArray,
+            "weight", mCurrentWeight,
+            "weightPrev", mPrevWeight
+        )
     }
 
     /**

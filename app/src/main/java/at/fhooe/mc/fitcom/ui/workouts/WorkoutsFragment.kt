@@ -92,7 +92,8 @@ class WorkoutsFragment : Fragment() {
             mWorkoutNames,
             "workoutColors",
             mWorkoutColors
-        )}
+        )
+    }
 
 
     override fun onDestroyView() {

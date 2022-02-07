@@ -10,12 +10,14 @@ import android.view.MenuItem
 import android.widget.Filter
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.forEach
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import at.fhooe.mc.fitcom.R
 import at.fhooe.mc.fitcom.databinding.ActivityExercisePoolBinding
 import at.fhooe.mc.fitcom.ui.exercises.exercisePool.api.ApiInterface
+import com.google.android.material.chip.Chip
 import com.google.gson.Gson
 import kotlinx.coroutines.*
 import retrofit2.Call
@@ -63,31 +65,13 @@ class ExercisePoolActivity : AppCompatActivity(), ExercisePoolAdapter.CallBackIn
             )
         )
 
-        binding.activityExercisePoolChipArms.setOnClickListener {
-
+        binding.chipsGroup.forEach { child ->
+            (child as? Chip)?.setOnCheckedChangeListener { _, _ ->
+                registerFilterChanged()
+            }
         }
 
-        binding.activityExercisePoolChipBack.setOnClickListener {
-
-        }
-
-        binding.activityExercisePoolChipChest.setOnClickListener {
-
-        }
-
-        binding.activityExercisePoolChipCore.setOnClickListener {
-
-        }
-
-        binding.activityExercisePoolChipLegs.setOnClickListener {
-
-        }
-
-        binding.activityExercisePoolChipShoulders.setOnClickListener {
-
-        }
-
-        binding.activityExerciseFabExercisePool.setOnClickListener{
+        binding.activityExerciseFabExercisePool.setOnClickListener {
             val intent = Intent();
             intent.putExtra("SingleCompleteExerciseDataArray", mExerciseCompleteData)
             setResult(RESULT_OK, intent);
@@ -114,10 +98,10 @@ class ExercisePoolActivity : AppCompatActivity(), ExercisePoolAdapter.CallBackIn
                 populateRecyclerView(mTempArrayList)
                 mTempArrayList.clear()
                 val searchText = newText!!.lowercase(Locale.getDefault())
-                if(searchText.isNotEmpty()){
+                if (searchText.isNotEmpty()) {
                     mFinalizedData?.forEach {
 
-                        if(it.name.lowercase(Locale.getDefault()).contains(searchText)){
+                        if (it.name.lowercase(Locale.getDefault()).contains(searchText)) {
                             mTempArrayList.add(it)
                         }
                     }
@@ -146,27 +130,41 @@ class ExercisePoolActivity : AppCompatActivity(), ExercisePoolAdapter.CallBackIn
         return true
     }
 
-    fun getFilter(): Filter {
-        return object : Filter() {
+    private fun registerFilterChanged() {
+        val ids = binding.chipsGroup.checkedChipIds
 
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val charString = constraint?.toString() ?: ""
-                for (data: ExercisePoolFinalizedData in mFinalizedData!!) {
+        var filteredList: ArrayList<ExercisePoolFinalizedData> = ArrayList()
 
-                    if (charString == data.category.toString()) {
-                        mFilteredData?.add(data)
-                    }
-                }
-                return FilterResults().apply { values = mFilteredData }
-            }
-
-            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
-
-            }
+        ids.forEach { id ->
+            filteredList.addAll(filter(binding.chipsGroup.findViewById<Chip>(id).text.toString()))
         }
+
+        if (ids.isEmpty()) {
+            filteredList = mFinalizedData!!
+        }
+        populateRecyclerView(filteredList)
     }
 
-    //TODO not really efficient
+    private fun filter(constraint: String): ArrayList<ExercisePoolFinalizedData> {
+        var finalCons = constraint
+        when (constraint) {
+            "Arms" -> finalCons = "8"
+            "Core" -> finalCons = "10"
+            "Back" -> finalCons = "12"
+            "Abs" -> finalCons = "14"
+            "Chest" -> finalCons = "11"
+            "Legs" -> finalCons = "9"
+            "Shoulders" -> finalCons = "13"
+        }
+        var returnArray: ArrayList<ExercisePoolFinalizedData> = ArrayList()
+        for (data: ExercisePoolFinalizedData in mFinalizedData!!) {
+            if (finalCons == data.category.toString()) {
+                returnArray?.add(data)
+            }
+        }
+        return returnArray
+    }
+
     private fun fetchExerciseData() {
         val apiInterface = ApiInterface.create().getExercises()
         apiInterface.enqueue(object : Callback<ExercisePoolDataResult> {

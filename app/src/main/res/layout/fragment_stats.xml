@@ -9,12 +9,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/stats_gained_constraintLayout"
-        android:layout_width="180dp"
+        android:layout_width="0dp"
         android:layout_height="86dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="#DFDFDF"
         android:elevation="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
         app:layout_constraintStart_toStartOf="@+id/fragment_stats_lineChart"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -36,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="in last day"
+            android:text="to previous"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/stats_gained_amount_textview" />
@@ -75,12 +77,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/stats_workouts_completed_constraintLayout_"
-        android:layout_width="180dp"
+        android:layout_width="0dp"
         android:layout_height="110dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="#DFDFDF"
         android:elevation="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/stats_total_kg_lifted_constraintLayout"
         app:layout_constraintStart_toStartOf="@+id/fragment_stats_lineChart"
         app:layout_constraintTop_toBottomOf="@+id/fragment_stats_lineChart">
 
@@ -109,13 +113,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/stats_total_kg_lifted_constraintLayout"
-        android:layout_width="180dp"
+        android:layout_width="0dp"
         android:layout_height="110dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="#DFDFDF"
         android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="@+id/fragment_stats_lineChart"
+        app:layout_constraintStart_toEndOf="@+id/stats_workouts_completed_constraintLayout_"
         app:layout_constraintTop_toBottomOf="@+id/fragment_stats_lineChart">
 
         <TextView
@@ -144,13 +150,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="180dp"
+        android:layout_width="0dp"
         android:layout_height="86dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_corner_rectangle"
         android:backgroundTint="#DFDFDF"
         android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="@+id/fragment_stats_lineChart"
+        app:layout_constraintStart_toEndOf="@+id/stats_gained_constraintLayout"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView

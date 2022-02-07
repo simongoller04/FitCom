@@ -13,7 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/chips_group" />
 
     <ProgressBar
         android:id="@+id/activity_exercise_pool_progressBar"
@@ -29,125 +29,124 @@
         app:layout_constraintTop_toTopOf="@+id/activity_exercise_pool_recyclerView" />
 
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
-        android:layout_width="0dp"
+        android:id="@+id/chips_group"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:chipSpacingHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="64dp">
+        app:layout_constraintTop_toTopOf="parent"
+        app:singleSelection="false">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/activity_exercise_pool_chip_arms"
-                style="@style/CustomChipChoice"
-                android:layout_width="110dp"
-                android:layout_height="55dp"
-                android:layout_marginBottom="8dp"
-                android:checkable="true"
-                android:clickable="true"
-                android:text="Arms"
-                android:textAlignment="center"
-                android:textSize="18dp"
-                app:checkedIconEnabled="false"
-                app:checkedIconVisible="false"
-                app:chipCornerRadius="8dp"
-                app:layout_constraintBottom_toTopOf="@id/activity_exercise_pool_chip_core"
-                app:layout_constraintEnd_toStartOf="@+id/activity_exercise_pool_chip_back"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/activity_exercise_pool_chip_arms"
+            style="@style/CustomChipChoice"
+            android:layout_width="110dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="8dp"
+            android:checkable="true"
+            android:clickable="true"
+            android:text="Arms"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipCornerRadius="8dp"
+            app:layout_constraintBottom_toTopOf="@id/activity_exercise_pool_chip_core"
+            app:layout_constraintEnd_toStartOf="@+id/activity_exercise_pool_chip_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/activity_exercise_pool_chip_back"
-                style="@style/CustomChipChoice"
-                android:layout_width="110dp"
-                android:layout_height="55dp"
-                android:checkable="true"
-                android:clickable="true"
-                android:text="Back"
-                android:textAlignment="center"
-                android:textSize="18dp"
-                app:checkedIconEnabled="false"
-                app:checkedIconVisible="false"
-                app:chipCornerRadius="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/activity_exercise_pool_chip_chest"
-                app:layout_constraintStart_toEndOf="@+id/activity_exercise_pool_chip_arms"
-                app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/activity_exercise_pool_chip_back"
+            style="@style/CustomChipChoice"
+            android:layout_width="110dp"
+            android:layout_height="55dp"
+            android:checkable="true"
+            android:clickable="true"
+            android:text="Back"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipCornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/activity_exercise_pool_chip_chest"
+            app:layout_constraintStart_toEndOf="@+id/activity_exercise_pool_chip_arms"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/activity_exercise_pool_chip_chest"
-                style="@style/CustomChipChoice"
-                android:layout_width="110dp"
-                android:layout_height="55dp"
-                android:checkable="true"
-                android:clickable="true"
-                android:text="Chest"
-                android:textAlignment="center"
-                android:textSize="18dp"
-                app:checkedIconEnabled="false"
-                app:checkedIconVisible="false"
-                app:chipCornerRadius="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/activity_exercise_pool_chip_back"
-                app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/activity_exercise_pool_chip_chest"
+            style="@style/CustomChipChoice"
+            android:layout_width="110dp"
+            android:layout_height="55dp"
+            android:checkable="true"
+            android:clickable="true"
+            android:text="Chest"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/activity_exercise_pool_chip_back"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/activity_exercise_pool_chip_core"
-                style="@style/CustomChipChoice"
-                android:layout_width="110dp"
-                android:layout_height="55dp"
-                android:checkable="true"
-                android:clickable="true"
-                android:text="Core"
-                android:textAlignment="center"
-                android:textSize="18dp"
-                app:checkedIconEnabled="false"
-                app:checkedIconVisible="false"
-                app:chipCornerRadius="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/activity_exercise_pool_chip_legs"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_exercise_pool_chip_arms" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/activity_exercise_pool_chip_core"
+            style="@style/CustomChipChoice"
+            android:layout_width="110dp"
+            android:layout_height="55dp"
+            android:checkable="true"
+            android:clickable="true"
+            android:text="Core"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipCornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/activity_exercise_pool_chip_legs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_exercise_pool_chip_arms" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/activity_exercise_pool_chip_legs"
-                style="@style/CustomChipChoice"
-                android:layout_width="110dp"
-                android:layout_height="55dp"
-                android:checkable="true"
-                android:clickable="true"
-                android:text="Legs"
-                android:textAlignment="center"
-                android:textSize="18dp"
-                app:checkedIconEnabled="false"
-                app:checkedIconVisible="false"
-                app:chipCornerRadius="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_pool_chip_core"
-                app:layout_constraintEnd_toStartOf="@+id/activity_exercise_pool_chip_shoulders"
-                app:layout_constraintStart_toEndOf="@+id/activity_exercise_pool_chip_core"
-                app:layout_constraintTop_toTopOf="@+id/activity_exercise_pool_chip_core" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/activity_exercise_pool_chip_legs"
+            style="@style/CustomChipChoice"
+            android:layout_width="110dp"
+            android:layout_height="55dp"
+            android:checkable="true"
+            android:clickable="true"
+            android:text="Legs"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipCornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_pool_chip_core"
+            app:layout_constraintEnd_toStartOf="@+id/activity_exercise_pool_chip_shoulders"
+            app:layout_constraintStart_toEndOf="@+id/activity_exercise_pool_chip_core"
+            app:layout_constraintTop_toTopOf="@+id/activity_exercise_pool_chip_core" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/activity_exercise_pool_chip_shoulders"
-                style="@style/CustomChipChoice"
-                android:layout_width="110dp"
-                android:layout_height="55dp"
-                android:checkable="true"
-                android:clickable="true"
-                android:text="Shoulders"
-                android:textAlignment="center"
-                android:textSize="18dp"
-                app:checkedIconEnabled="false"
-                app:checkedIconVisible="false"
-                app:chipCornerRadius="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_pool_chip_core"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/activity_exercise_pool_chip_legs"
-                app:layout_constraintTop_toTopOf="@+id/activity_exercise_pool_chip_core" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/activity_exercise_pool_chip_shoulders"
+            style="@style/CustomChipChoice"
+            android:layout_width="110dp"
+            android:layout_height="55dp"
+            android:checkable="true"
+            android:clickable="true"
+            android:text="Shoulders"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            app:checkedIconEnabled="false"
+            app:checkedIconVisible="false"
+            app:chipCornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_exercise_pool_chip_core"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/activity_exercise_pool_chip_legs"
+            app:layout_constraintTop_toTopOf="@+id/activity_exercise_pool_chip_core" />
+
 
     </com.google.android.material.chip.ChipGroup>
 

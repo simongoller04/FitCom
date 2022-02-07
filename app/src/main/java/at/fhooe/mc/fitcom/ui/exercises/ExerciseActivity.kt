@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import at.fhooe.mc.fitcom.R
 import at.fhooe.mc.fitcom.databinding.ActivityExerciseBinding
@@ -19,12 +20,13 @@ import at.fhooe.mc.fitcom.ui.exercises.exercisePool.ExercisePoolActivity
 import at.fhooe.mc.fitcom.ui.exercises.exercisePool.ExercisePoolFinalizedData
 import at.fhooe.mc.fitcom.ui.exercises.exercisePool.SingleCompleteExerciseData
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 
 
-class ExerciseActivity : AppCompatActivity() {
+class ExerciseActivity : AppCompatActivity(), ExerciseAdapter.workoutCompleted {
 
     private lateinit var binding: ActivityExerciseBinding
     private lateinit var mName: String
@@ -62,8 +64,9 @@ class ExerciseActivity : AppCompatActivity() {
             )
         )
 
-        mAdapter = ExerciseAdapter(mExerciseNames, mWeights, mReps, mSets, mImages)
+        mAdapter = ExerciseAdapter(mExerciseNames, mWeights, mReps, mSets, mImages, this)
         binding.activityExerciseRecyclerView.adapter = mAdapter
+
         binding.activityExerciseRecyclerView.layoutManager =
             LinearLayoutManager(binding.root.context)
 
@@ -82,10 +85,35 @@ class ExerciseActivity : AppCompatActivity() {
                             binding.activityExerciseTextView.isVisible = mExerciseNames.isEmpty()
 
                             mAdapter =
-                                ExerciseAdapter(mExerciseNames, mWeights, mReps, mSets, mImages)
+                                ExerciseAdapter(
+                                    mExerciseNames,
+                                    mWeights,
+                                    mReps,
+                                    mSets,
+                                    mImages,
+                                    this
+                                )
 
                             binding.activityExerciseRecyclerView.adapter = mAdapter
+
+                            ItemTouchHelper(
+                                SwipeToDelete(
+                                    (mAdapter),
+                                    applicationContext
+                                )
+                            ).attachToRecyclerView(
+                                (binding.activityExerciseRecyclerView)
+                            )
                         }
+                    } else {
+                        ItemTouchHelper(
+                            SwipeToDelete(
+                                (mAdapter),
+                                applicationContext
+                            )
+                        ).attachToRecyclerView(
+                            (binding.activityExerciseRecyclerView)
+                        )
                     }
 
                 } else {
@@ -118,6 +146,7 @@ class ExerciseActivity : AppCompatActivity() {
                     mImages.add(it.image)
                 }
                 binding.activityExerciseTextView.isVisible = mExerciseNames.isEmpty()
+
                 binding.activityExerciseRecyclerView.adapter?.notifyDataSetChanged()
             }
         }
@@ -150,7 +179,9 @@ class ExerciseActivity : AppCompatActivity() {
                 }
             }
             sharedPref.edit().remove("exerciseData").apply()
-            (binding.activityExerciseRecyclerView.adapter as ExerciseAdapter).markAsChecked(exerciseData.name)
+            (binding.activityExerciseRecyclerView.adapter as ExerciseAdapter).markAsChecked(
+                exerciseData.name
+            )
             binding.activityExerciseRecyclerView.adapter?.notifyDataSetChanged()
         }
     }
@@ -165,6 +196,12 @@ class ExerciseActivity : AppCompatActivity() {
             "images" to mImages
         )
         mDbCollection.collection("exercises").document(mName).set(exerciseData)
+    }
+
+    override fun passResultCallback(isWorkoutCompleted: Boolean) {
+        if (isWorkoutCompleted) {
+            mDbCollection.update("workoutsCompleted", FieldValue.increment(1))
+        }
     }
 
 }

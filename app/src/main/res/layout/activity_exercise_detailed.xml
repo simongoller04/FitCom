@@ -32,33 +32,20 @@
 
     <ImageView
         android:id="@+id/activity_exercise_detailed_imageView"
-        android:layout_width="165dp"
-        android:layout_height="165dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_exercise_detailed_name"
-        app:srcCompat="@drawable/ic_exercises" />
-
-    <TextView
-        android:id="@+id/activity_exercise_detailed_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Benchpress"
-        android:textAlignment="center"
-        android:textSize="38dp"
-        android:textStyle="bold"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_exercises" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/activity_exercise_detailed_sets_cardview"
         android:layout_width="0dp"
         android:layout_height="84dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         app:cardElevation="0dp"
         app:cardMaxElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -68,9 +68,13 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener{
                             //safe user in hashMap to then insert into the database
                             val user = hashMapOf(
                                 "firstName" to firstName.toString(),
-                                "weight" to 0,
+                                "weight" to 0f,
                                 "workoutNames" to ArrayList<String>(),
                                 "workoutColors" to ArrayList<Int>(),
+                                "weightArray" to ArrayList<Float>(),
+                                "weightPrev" to 0f,
+                                "workoutsCompleted" to 0,
+                                "totalWeightLifted" to 0f,
                                 "uid" to mAuth.uid
                             )
                             //get the user ID of the user and name the document in the database like that

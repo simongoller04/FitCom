@@ -13,12 +13,19 @@ import at.fhooe.mc.fitcom.R
 import at.fhooe.mc.fitcom.databinding.ActivityExerciseDetailedBinding
 import at.fhooe.mc.fitcom.ui.exercises.ExerciseActivity
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 
 class ExerciseDetailedActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityExerciseDetailedBinding
     private lateinit var mDataExercise: SingleCompleteExerciseData
+    private var mAuth = FirebaseAuth.getInstance()
+    private var mDbCollection =
+        Firebase.firestore.collection("users").document(mAuth.uid.toString())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +40,6 @@ class ExerciseDetailedActivity : AppCompatActivity() {
         if (extras != null) {
             mDataExercise = extras.getSerializable("exerciseData") as SingleCompleteExerciseData
             supportActionBar!!.title = mDataExercise.name
-            binding.activityExerciseDetailedName.text = mDataExercise.name
             binding.activityExerciseDetailedRepsAmountTextview.text = mDataExercise.reps.toString()
             binding.activityExerciseDetailedSetsAmountTextview.text = mDataExercise.sets.toString()
             binding.activityExerciseDetailedWeightAmountTextview.text =
@@ -104,24 +110,31 @@ class ExerciseDetailedActivity : AppCompatActivity() {
                 putString("exerciseData", json.toString())
                 apply()
             }
+
+            val amountOfReps = binding.activityExerciseDetailedSetsAmountTextview.text.toString()
+                .toInt() *
+                    binding.activityExerciseDetailedRepsAmountTextview.text.toString()
+                        .toInt()
+
+            val totalWeightThisExercise: Double =
+                binding.activityExerciseDetailedWeightAmountTextview.text.toString()
+                    .toDouble() * amountOfReps
+
+            mDbCollection.update(
+                "totalWeightLifted",
+                FieldValue.increment(
+                    totalWeightThisExercise
+                )
+            )
+
             finish()
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_nav_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when (item.itemId) {
             android.R.id.home -> {
                 onBackPressed()
-                return true
-            }
-
-            R.id.navigation_settings -> {
                 return true
             }
         }
