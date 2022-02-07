@@ -9,14 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
 import at.fhooe.mc.fitcom.R
 import at.fhooe.mc.fitcom.ui.exercises.exercisePool.ExerciseDetailedActivity
 import at.fhooe.mc.fitcom.ui.exercises.exercisePool.ExercisePoolActivity
+import at.fhooe.mc.fitcom.ui.exercises.exercisePool.SingleCompleteExerciseData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class ExerciseAdapter (val exercises: ArrayList<String>, val weights: ArrayList<Float>, val reps: ArrayList<Int>, val sets: ArrayList<Int>): RecyclerView.Adapter<ExerciseViewHolder>(){
+class ExerciseAdapter (val exercises: ArrayList<String>, val weights: ArrayList<Float>, val reps: ArrayList<Int>, val sets: ArrayList<Int>, val images: ArrayList<String>): RecyclerView.Adapter<ExerciseViewHolder>(){
 
     private var mAuth = FirebaseAuth.getInstance()
     private var mDb = Firebase.firestore
+    private var mCheckedExercises = ArrayList<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseViewHolder {
         LayoutInflater.from(parent.context).apply {
@@ -30,10 +32,12 @@ class ExerciseAdapter (val exercises: ArrayList<String>, val weights: ArrayList<
         holder.mWeight.text = weights[position].toString() + "kg"
         holder.mReps.text = reps[position].toString() + " reps"
         holder.mSets.text = sets[position].toString() + " sets"
+        holder.mCardView.isChecked = mCheckedExercises.contains(exercises[position])
+
+        val exerciseData = SingleCompleteExerciseData(exercises[position], sets[position], reps[position], weights[position], images[position])
 
         holder.mCardView.setOnClickListener {
-            holder.mRoot.context.startActivity(Intent(holder.mRoot.context, ExerciseDetailedActivity::class.java))
-            holder.mCardView.isChecked = true   //TODO ("Change to open new activity")
+            holder.mRoot.context.startActivity(Intent(holder.mRoot.context, ExerciseDetailedActivity::class.java).putExtra("exerciseData", exerciseData))
         }
     }
 
@@ -41,11 +45,16 @@ class ExerciseAdapter (val exercises: ArrayList<String>, val weights: ArrayList<
         return exercises.size
     }
 
-    fun addItem(_exerciseNameAdd: String, _weightAdd: Float, _repsAdd: Int, _setsAdd: Int) {
+    fun markAsChecked(exerciseName: String){
+        mCheckedExercises.add(exerciseName)
+    }
+
+    fun addItem(_exerciseNameAdd: String, _weightAdd: Float, _repsAdd: Int, _setsAdd: Int, _imageAdd: String) {
         exercises.add(_exerciseNameAdd)
         weights.add(_weightAdd)
         reps.add(_repsAdd)
         sets.add(_setsAdd)
+        images.add(_imageAdd)
 
         notifyItemInserted(exercises.size-1)
     }

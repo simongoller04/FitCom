@@ -2,24 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="300dp"
+    android:layout_height="430dp"
     android:background="@drawable/dialog_rounded_corner">
 
     <Button
         android:id="@+id/dialog_add_exercise_button_sets_minus"
         android:layout_width="30dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         app:icon="@drawable/subtract_icon"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintEnd_toStartOf="@+id/dialog_add_exercise_button_sets_plus"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <Button
         android:id="@+id/dialog_add_exercise_button_reps_minus"
@@ -65,7 +64,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
         android:text="Cancel"
+        android:textSize="16sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/dialog_add_exercise_button_add"
         app:layout_constraintStart_toStartOf="@+id/dialog_add_exercise_imageView" />
@@ -77,92 +79,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:text="Add"
+        android:textSize="16sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/dialog_add_exercise_button_cancel"
         app:layout_constraintEnd_toEndOf="@+id/dialog_add_exercise_imageView"
         app:layout_constraintStart_toEndOf="@+id/dialog_add_exercise_button_cancel"
         app:layout_constraintTop_toTopOf="@+id/dialog_add_exercise_button_cancel" />
-
-    <ImageView
-        android:id="@+id/dialog_add_exercise_imageView"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_exercises" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="00"
-        android:textSize="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView6" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="8dp"
-        android:text="00"
-        android:textSize="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_add_exercise_imageView" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sets"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/dialog_add_exercise_imageView"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Reps"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/dialog_add_exercise_button_reps_minus"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_add_exercise_button_sets_minus" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dialog_add_exercise_textField_weight"
-        style="@style/customTextFieldsSmall"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/dialog_add_exercise_button_cancel"
-        app:layout_constraintEnd_toEndOf="@+id/dialog_add_exercise_button_reps_plus"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="start"
-            android:gravity="center"
-            android:hint="Weight (kg)"
-            android:numeric="decimal"
-            android:textAlignment="center" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/dialog_add_exercise_button_info"
@@ -177,5 +99,83 @@
         app:iconTint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/dialog_add_exercise_imageView"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_exercises" />
+
+    <TextView
+        android:id="@+id/dialog_add_exercise_textView_sets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dialog_add_exercise_button_sets_minus"
+        app:layout_constraintEnd_toStartOf="@+id/dialog_add_exercise_button_sets_plus"
+        app:layout_constraintStart_toEndOf="@+id/dialog_add_exercise_button_sets_minus"
+        app:layout_constraintTop_toTopOf="@+id/dialog_add_exercise_button_sets_minus" />
+
+    <TextView
+        android:id="@+id/dialog_add_exercise_textView_reps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView6"
+        app:layout_constraintEnd_toStartOf="@+id/dialog_add_exercise_button_reps_plus"
+        app:layout_constraintStart_toEndOf="@+id/dialog_add_exercise_button_reps_minus"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Sets"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/dialog_add_exercise_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_add_exercise_imageView" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Reps"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/dialog_add_exercise_button_reps_minus"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_add_exercise_button_sets_minus" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dialog_add_exercise_textField_weight"
+        style="@style/customTextFieldsSmall"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/dialog_add_exercise_button_reps_plus"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_add_exercise_textView_reps">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:gravity="center"
+            android:hint="Weight (kg)"
+            android:numeric="decimal"
+            android:textAlignment="center"
+            android:textSize="18dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,12 @@
 package at.fhooe.mc.fitcom.ui.exercises.exercisePool
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Filter
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
@@ -23,7 +25,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class ExercisePoolActivity : AppCompatActivity() {
+class ExercisePoolActivity : AppCompatActivity(), ExercisePoolAdapter.CallBackInterface {
 
     private lateinit var binding: ActivityExercisePoolBinding
     private var mExerciseData: ArrayList<ExercisePoolData>? = null
@@ -31,6 +33,7 @@ class ExercisePoolActivity : AppCompatActivity() {
     private var mFinalizedData: ArrayList<ExercisePoolFinalizedData>? = null
     private lateinit var mTempArrayList: ArrayList<ExercisePoolFinalizedData>
     private var mFilteredData: ArrayList<ExercisePoolFinalizedData> = ArrayList()
+    private var mExerciseCompleteData: ArrayList<SingleCompleteExerciseData> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +41,9 @@ class ExercisePoolActivity : AppCompatActivity() {
         binding = ActivityExercisePoolBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.title = "Exercises"
+        supportActionBar!!.title = "Exercises"
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_)
 
         if (!loadFromSharedPreferences()) {
             binding.activityExercisePoolProgressBar.isVisible = true
@@ -48,6 +53,8 @@ class ExercisePoolActivity : AppCompatActivity() {
         }
 
         mTempArrayList = arrayListOf<ExercisePoolFinalizedData>()
+
+        binding.activityExerciseFabExercisePool.isVisible = false
 
         binding.activityExercisePoolRecyclerView.addItemDecoration(
             DividerItemDecoration(
@@ -79,6 +86,18 @@ class ExercisePoolActivity : AppCompatActivity() {
         binding.activityExercisePoolChipShoulders.setOnClickListener {
 
         }
+
+        binding.activityExerciseFabExercisePool.setOnClickListener{
+            val intent = Intent();
+            intent.putExtra("SingleCompleteExerciseDataArray", mExerciseCompleteData)
+            setResult(RESULT_OK, intent);
+            finish()
+        }
+    }
+
+    override fun passResultCallback(exerciseData: SingleCompleteExerciseData) {
+        binding.activityExerciseFabExercisePool.isVisible = true
+        mExerciseCompleteData.add(exerciseData)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -115,6 +134,16 @@ class ExercisePoolActivity : AppCompatActivity() {
 
         })
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return true
     }
 
     fun getFilter(): Filter {
@@ -186,7 +215,7 @@ class ExercisePoolActivity : AppCompatActivity() {
         data: ArrayList<ExercisePoolFinalizedData>
     ) {
         binding.activityExercisePoolRecyclerView.adapter =
-            ExercisePoolAdapter(data)
+            ExercisePoolAdapter(data, this)
         binding.activityExercisePoolRecyclerView.layoutManager =
             LinearLayoutManager(this@ExercisePoolActivity)
     }
