@@ -70,50 +70,31 @@ class ExerciseActivity : AppCompatActivity(), ExerciseAdapter.workoutCompleted {
         binding.activityExerciseRecyclerView.layoutManager =
             LinearLayoutManager(binding.root.context)
 
+        ItemTouchHelper(
+            SwipeToDelete(
+                (mAdapter),
+                applicationContext
+            )
+        ).attachToRecyclerView(
+            (binding.activityExerciseRecyclerView)
+        )
+
         if (mAuth.currentUser != null) {
             mDbCollection.collection("exercises").document(mName).get().addOnCompleteListener() {
                 if (it.isSuccessful) {
                     if (it.result != null) {
                         if (it.result!!.exists()) {
 
-                            mExerciseNames = it.result!!["exerciseNames"] as ArrayList<String>
-                            mWeights = it.result!!["weights"] as ArrayList<Float>
-                            mReps = it.result!!["reps"] as ArrayList<Int>
-                            mSets = it.result!!["sets"] as ArrayList<Int>
-                            mImages = it.result!!["images"] as ArrayList<String>
+                            mExerciseNames.addAll(it.result!!["exerciseNames"] as ArrayList<String>)
+                            mWeights.addAll(it.result!!["weights"] as ArrayList<Float>)
+                            mReps.addAll(it.result!!["reps"] as ArrayList<Int>)
+                            mSets.addAll(it.result!!["sets"] as ArrayList<Int>)
+                            mImages.addAll(it.result!!["images"] as ArrayList<String>)
 
                             binding.activityExerciseTextView.isVisible = mExerciseNames.isEmpty()
 
-                            mAdapter =
-                                ExerciseAdapter(
-                                    mExerciseNames,
-                                    mWeights,
-                                    mReps,
-                                    mSets,
-                                    mImages,
-                                    this
-                                )
-
-                            binding.activityExerciseRecyclerView.adapter = mAdapter
-
-                            ItemTouchHelper(
-                                SwipeToDelete(
-                                    (mAdapter),
-                                    applicationContext
-                                )
-                            ).attachToRecyclerView(
-                                (binding.activityExerciseRecyclerView)
-                            )
+                            mAdapter.notifyDataSetChanged()
                         }
-                    } else {
-                        ItemTouchHelper(
-                            SwipeToDelete(
-                                (mAdapter),
-                                applicationContext
-                            )
-                        ).attachToRecyclerView(
-                            (binding.activityExerciseRecyclerView)
-                        )
                     }
 
                 } else {
